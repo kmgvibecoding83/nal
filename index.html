@@ -1,0 +1,1995 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ACCA AA (F8) — пособие</title>
+<meta name="description" content="Учебное пособие для самоподготовки к экзамену ACCA AA (F8) — Audit and Assurance: теория, OT-тренажёр, кейсы, глоссарий и калькуляторы.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f5f6f8; --surface:#ffffff; --surface2:#eff2f5; --text:#18212d; --muted:#5a6577; --border:#e1e5eb;
+  --primary:#0e5f72; --on-primary:#ffffff; --primary-soft:#e2f0f3; --accent:#c47f26; --accent-soft:#fbf1e2;
+  --ok:#1d8a4b; --ok-soft:#e3f4ea; --bad:#c03a2b; --bad-soft:#fbe8e5;
+  --mA:#0f7a8a; --mB:#5656d0; --mC:#b8761b; --mD:#2c8a57; --mE:#bf4369;
+  --shadow:0 1px 2px rgba(16,24,40,.05),0 6px 16px rgba(16,24,40,.06);
+  --radius:14px; --sidebar:292px;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0e1318; --surface:#151b23; --surface2:#1c242f; --text:#e5e9ef; --muted:#97a2b4; --border:#28313d;
+    --primary:#5cb9cb; --on-primary:#06222a; --primary-soft:#14343d; --accent:#e2a65a; --accent-soft:#2b2317;
+    --ok:#4fc58b; --ok-soft:#132e24; --bad:#ef7d70; --bad-soft:#381c19;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 16px rgba(0,0,0,.25);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0e1318; --surface:#151b23; --surface2:#1c242f; --text:#e5e9ef; --muted:#97a2b4; --border:#28313d;
+  --primary:#5cb9cb; --on-primary:#06222a; --primary-soft:#14343d; --accent:#e2a65a; --accent-soft:#2b2317;
+  --ok:#4fc58b; --ok-soft:#132e24; --bad:#ef7d70; --bad-soft:#381c19;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 16px rgba(0,0,0,.25);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:15.5px/1.62 Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;overflow-x:hidden}
+a{color:var(--primary)}
+button{font:inherit}
+svg.i{width:18px;height:18px;flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+/* top bar */
+.topbar{position:sticky;top:0;z-index:30;height:60px;display:flex;align-items:center;gap:12px;padding:0 16px;background:var(--surface);border-bottom:1px solid var(--border)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);white-space:nowrap}
+.brand .logo{width:36px;height:36px;border-radius:10px;background:var(--primary);color:var(--on-primary);display:grid;place-items:center;font-size:12.5px;font-weight:700;letter-spacing:.3px}
+.brand b{font-size:15px;display:block;line-height:1.15}
+.brand small{color:var(--muted);font-size:12px;display:block;line-height:1.2}
+.search{flex:1;max-width:440px;margin-left:auto;position:relative}
+.search input{width:100%;height:38px;border:1px solid var(--border);border-radius:10px;background:var(--surface2);color:var(--text);padding:0 12px 0 36px;font:inherit;font-size:14px;outline:none}
+.search input:focus{border-color:var(--primary);background:var(--surface)}
+.search svg{position:absolute;left:11px;top:10px;color:var(--muted)}
+.iconbtn{width:38px;height:38px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--text);display:grid;place-items:center;cursor:pointer;flex:none}
+.iconbtn:hover{background:var(--surface2)}
+.menu-btn{display:none}
+
+/* layout */
+.layout{display:grid;grid-template-columns:var(--sidebar) minmax(0,1fr);min-height:calc(100vh - 60px)}
+.sidebar{position:sticky;top:60px;height:calc(100vh - 60px);overflow:auto;border-right:1px solid var(--border);background:var(--surface);padding:12px 10px 40px}
+.nav-label{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:600;padding:14px 10px 6px}
+.nav a{display:flex;align-items:center;gap:10px;padding:7px 10px;border-radius:9px;color:var(--text);text-decoration:none;font-size:14px;line-height:1.35}
+.nav a:hover{background:var(--surface2)}
+.nav a.active{background:var(--primary-soft);color:var(--primary);font-weight:600}
+.nav .num{flex:none;width:24px;height:24px;border-radius:7px;background:var(--surface2);display:grid;place-items:center;font-size:11.5px;font-weight:700;color:var(--muted)}
+.nav .num.m{color:#fff}
+.nav a.done .chk{margin-left:auto;color:var(--ok);font-size:13px}
+.nav .count{margin-left:auto;font-size:11.5px;color:var(--muted);font-weight:500}
+main{min-width:0;padding:32px 40px 90px}
+.wrap{max-width:900px;margin:0 auto}
+.scrim{display:none}
+@media (max-width:920px){
+  .layout{grid-template-columns:minmax(0,1fr)}
+  .sidebar{position:fixed;left:0;top:60px;width:min(86vw,320px);transform:translateX(-102%);transition:transform .2s ease;z-index:40;box-shadow:var(--shadow)}
+  body.nav-open .sidebar{transform:none}
+  body.nav-open .scrim{display:block;position:fixed;inset:60px 0 0 0;background:rgba(0,0,0,.35);z-index:35}
+  .menu-btn{display:grid}
+  main{padding:22px 16px 70px}
+  .brand .txt{display:none}
+}
+
+/* generic */
+.kicker{font-size:12px;text-transform:uppercase;letter-spacing:.09em;font-weight:600;color:var(--primary)}
+.page-head{margin:0 0 26px}
+.page-head h1{font-family:"PT Serif",Georgia,serif;font-size:34px;line-height:1.18;margin:6px 0 8px}
+.lead{color:var(--muted);font-size:16.5px;margin:0;max-width:680px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);margin:0 0 20px}
+.card>h2,.block-title{font-size:18px;margin:0 0 14px}
+.btn{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 16px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--text);cursor:pointer;text-decoration:none;font-weight:500;font-size:14.5px;white-space:nowrap}
+.btn:hover{background:var(--surface2)}
+.btn.primary{background:var(--primary);border-color:var(--primary);color:var(--on-primary)}
+.btn.primary:hover{filter:brightness(1.08)}
+.btn.btn-ok{background:var(--ok-soft);border-color:var(--ok);color:var(--ok)}
+.btn.sm{height:32px;padding:0 12px;font-size:13.5px}
+.link{background:none;border:0;padding:0;color:var(--primary);cursor:pointer;font-weight:500;font-size:14px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 0}
+.chip{font-size:13px;padding:5px 11px;border-radius:999px;background:var(--surface2);color:var(--muted);border:1px solid var(--border)}
+.chip b{color:var(--text);font-weight:600}
+.grid{display:grid;gap:16px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:760px){.g2,.g3{grid-template-columns:minmax(0,1fr)}}
+.bar{height:8px;border-radius:99px;background:var(--surface2);overflow:hidden}
+.bar>i{display:block;height:100%;background:var(--primary);border-radius:99px;transition:width .3s}
+.seg{display:inline-flex;flex-wrap:wrap;gap:4px;padding:4px;background:var(--surface2);border-radius:11px;border:1px solid var(--border)}
+.seg a,.seg button{border:0;background:none;color:var(--muted);padding:6px 12px;border-radius:8px;cursor:pointer;text-decoration:none;font-size:13.5px;font-weight:500}
+.seg .on{background:var(--surface);color:var(--text);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+
+/* hero */
+.hero{position:relative;overflow:hidden;background:linear-gradient(135deg,var(--primary) 0%,#174a6b 100%);color:#fff;border-radius:18px;padding:34px 34px 30px;margin:0 0 22px}
+.hero .kicker{color:rgba(255,255,255,.75)}
+.hero h1{font-family:"PT Serif",Georgia,serif;font-size:38px;line-height:1.12;margin:8px 0 6px;max-width:640px}
+.hero p{margin:0;color:rgba(255,255,255,.85);font-size:17px;max-width:620px}
+.hero .chips .chip{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.85)}
+.hero .chips .chip b{color:#fff}
+.hero .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.hero .btn{border-color:rgba(255,255,255,.35);background:rgba(255,255,255,.1);color:#fff}
+.hero .btn.primary{background:#fff;color:#0e3f4f;border-color:#fff}
+.hero .deco{position:absolute;right:-30px;top:-30px;width:260px;height:260px;border-radius:50%;border:44px solid rgba(255,255,255,.06)}
+@media (max-width:620px){.hero{padding:26px 20px}.hero h1{font-size:29px}}
+
+.stat{display:flex;flex-direction:column;gap:8px}
+.stat .v{font-size:26px;font-weight:700;line-height:1}
+.stat .l{font-size:13px;color:var(--muted)}
+
+.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.flow span{padding:7px 12px;border-radius:9px;background:var(--surface2);border:1px solid var(--border);font-size:13.5px;font-weight:500}
+.flow em{color:var(--muted);font-style:normal}
+
+.exam-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:0 0 18px}
+.exam-stats div{background:var(--surface2);border-radius:11px;padding:12px 14px}
+.exam-stats b{display:block;font-size:20px}
+.exam-stats span{font-size:12.5px;color:var(--muted)}
+@media (max-width:620px){.exam-stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.split{display:flex;height:40px;border-radius:10px;overflow:hidden;font-size:13.5px;font-weight:600;color:#fff}
+.split div{display:flex;align-items:center;padding:0 12px;white-space:nowrap}
+.split .sa{background:var(--accent)}
+.split .sb{background:var(--primary);color:var(--on-primary)}
+.split-legend{display:grid;grid-template-columns:3fr 7fr;gap:16px;margin-top:10px;font-size:13.5px;color:var(--muted)}
+.split-legend b{color:var(--text)}
+@media (max-width:620px){.split-legend{grid-template-columns:1fr}}
+
+.mods{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.mod{display:flex;flex-direction:column;gap:10px;padding:18px;border-radius:var(--radius);background:var(--surface);border:1px solid var(--border);text-decoration:none;color:var(--text);box-shadow:var(--shadow);transition:transform .15s,border-color .15s}
+.mod:hover{transform:translateY(-2px);border-color:var(--mc)}
+.mod .top{display:flex;align-items:center;gap:12px}
+.letter{width:42px;height:42px;border-radius:11px;background:var(--mc);color:#fff;display:grid;place-items:center;font-weight:700;font-size:19px;flex:none}
+.mod h3{margin:0;font-size:15.5px;line-height:1.3}
+.mod .en{font-size:12.5px;color:var(--muted)}
+.mod .meta{display:flex;justify-content:space-between;font-size:12.5px;color:var(--muted);margin-top:auto}
+.mod .bar>i{background:var(--mc)}
+.mA{--mc:var(--mA)}.mB{--mc:var(--mB)}.mC{--mc:var(--mC)}.mD{--mc:var(--mD)}.mE{--mc:var(--mE)}
+
+.links{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:8px}
+.links a{display:flex;gap:10px;align-items:center;padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:var(--surface);text-decoration:none;color:var(--text);font-size:14px}
+.links a:hover{border-color:var(--primary)}
+.links .num{flex:none;width:26px;height:26px;border-radius:7px;background:var(--surface2);display:grid;place-items:center;font-size:12px;font-weight:700;color:var(--muted)}
+
+/* section */
+.crumbs{font-size:13px;color:var(--muted);display:flex;gap:8px;margin-bottom:14px}
+.crumbs a{color:var(--muted);text-decoration:none}
+.crumbs a:hover{color:var(--primary)}
+.sec-head{display:flex;gap:16px;align-items:flex-start;margin:0 0 20px}
+.sec-num{width:54px;height:54px;border-radius:14px;background:var(--mc,var(--surface2));color:#fff;display:grid;place-items:center;font-weight:700;font-size:22px;flex:none}
+.sec-head:not([class*=" m"]) .sec-num{color:var(--muted);border:1px solid var(--border)}
+.sec-head h1{font-family:"PT Serif",Georgia,serif;font-size:31px;line-height:1.18;margin:3px 0 2px}
+.sec-head .en{color:var(--muted);font-size:15px}
+@media (max-width:620px){.sec-head h1{font-size:25px}.sec-num{width:44px;height:44px;font-size:18px}}
+.toc{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 26px;padding:14px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius)}
+.toc a{font-size:13px;padding:5px 10px;border-radius:8px;background:var(--surface2);color:var(--text);text-decoration:none}
+.toc a:hover{background:var(--primary-soft);color:var(--primary)}
+
+.doc h2{font-size:22px;line-height:1.3;margin:38px 0 14px;scroll-margin-top:80px}
+.doc h3{font-size:17px;margin:26px 0 10px;scroll-margin-top:80px}
+.doc h2.h-ot,.doc h2.h-case{display:flex;align-items:center;gap:10px;padding:12px 16px;border-radius:12px;font-size:18px}
+.doc h2.h-ot{background:var(--primary-soft);color:var(--primary)}
+.doc h2.h-case{background:var(--accent-soft);color:var(--accent)}
+.doc p{margin:0 0 14px}
+.doc ul,.doc ol{margin:0 0 16px;padding-left:22px}
+.doc li{margin:5px 0}
+.doc li::marker{color:var(--muted)}
+.doc ul.checklist{list-style:none;padding:0}
+.cb{display:inline-grid;place-items:center;width:18px;height:18px;border-radius:5px;border:1.5px solid var(--border);font-size:12px;vertical-align:-3px;margin-right:4px}
+.cb.on{background:var(--ok);border-color:var(--ok);color:#fff}
+.doc strong{font-weight:600}
+code{font-family:ui-monospace,Consolas,monospace;font-size:.9em;background:var(--surface2);padding:1px 5px;border-radius:5px}
+.tbl{overflow-x:auto;margin:0 0 20px;border:1px solid var(--border);border-radius:12px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:14px;line-height:1.5}
+th{background:var(--surface2);text-align:left;font-weight:600;padding:10px 13px;border-bottom:1px solid var(--border);vertical-align:bottom}
+td{padding:10px 13px;border-top:1px solid var(--border);vertical-align:top}
+tbody tr:first-child td{border-top:0}
+blockquote{margin:0 0 18px;padding:14px 18px;border-left:4px solid var(--accent);background:var(--accent-soft);border-radius:0 12px 12px 0}
+blockquote p:last-child{margin-bottom:0}
+hr{border:0;border-top:1px dashed var(--border);margin:34px 0}
+.sec-foot{display:flex;justify-content:center;margin:40px 0 22px}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pg{display:flex;flex-direction:column;gap:2px;padding:14px 16px;border:1px solid var(--border);border-radius:12px;background:var(--surface);text-decoration:none;color:var(--text)}
+.pg:hover{border-color:var(--primary)}
+.pg small{color:var(--muted);font-size:12.5px}
+.pg span{font-weight:600;font-size:14.5px}
+.pg.next{text-align:right}
+@keyframes flash{from{background:var(--primary-soft)}to{background:transparent}}
+.flash{animation:flash 1.6s ease-out}
+
+/* quiz */
+.quiz{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px 18px 14px;margin:0 0 16px;box-shadow:var(--shadow)}
+.quiz-top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:8px}
+.tag{font-size:12px;font-weight:600;padding:3px 9px;border-radius:7px;background:var(--primary-soft);color:var(--primary)}
+.tag.m{background:var(--mc);color:#fff}
+.pts{font-size:12px;color:var(--muted)}
+.quiz-q{font-weight:500;margin:0 0 10px}
+.opt{display:flex;gap:11px;align-items:flex-start;width:100%;text-align:left;padding:10px 12px;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--text);cursor:pointer;margin:6px 0;line-height:1.45;font-size:14.5px}
+.opt:hover:not(:disabled){border-color:var(--primary);background:var(--primary-soft)}
+.opt .n{flex:none;width:22px;height:22px;border-radius:6px;background:var(--surface2);display:grid;place-items:center;font-size:12px;font-weight:700;color:var(--muted)}
+.opt:disabled{cursor:default}
+.opt.correct{border-color:var(--ok);background:var(--ok-soft)}
+.opt.correct .n{background:var(--ok);color:#fff}
+.opt.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.opt.wrong .n{background:var(--bad);color:#fff}
+.expl{margin-top:12px;padding:12px 14px;border-radius:10px;background:var(--surface2);font-size:14.5px}
+.expl .verdict{font-weight:700;margin-bottom:4px}
+.expl.ok .verdict{color:var(--ok)}
+.expl.no .verdict{color:var(--bad)}
+.expl .link{margin-top:8px}
+.score{display:flex;flex-wrap:wrap;gap:22px;align-items:center}
+.score .stat .v{font-size:24px}
+.quiz-bar{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;margin:0 0 18px}
+.qsrc{font-size:12.5px;color:var(--muted);text-decoration:none}
+.qsrc:hover{color:var(--primary)}
+
+details.solution{margin:0 0 18px;border:1px solid var(--border);border-radius:var(--radius);background:var(--surface);overflow:hidden}
+details.solution>summary{cursor:pointer;list-style:none;padding:13px 16px;font-weight:600;color:var(--primary);display:flex;align-items:center;gap:8px}
+details.solution>summary::-webkit-details-marker{display:none}
+details.solution>summary::before{content:"▸";transition:transform .15s}
+details.solution[open]>summary::before{transform:rotate(90deg)}
+details.solution[open]>summary{border-bottom:1px solid var(--border)}
+.sol-body{padding:16px 16px 4px}
+.sol-body .tbl{background:var(--bg)}
+
+/* search */
+.result{display:block;padding:14px 16px;border:1px solid var(--border);border-radius:12px;background:var(--surface);margin:0 0 10px;text-decoration:none;color:var(--text)}
+.result:hover{border-color:var(--primary)}
+.result .where{font-size:12.5px;color:var(--muted);margin-bottom:3px}
+.result .t{font-weight:600;margin-bottom:4px}
+.result .s{font-size:14px;color:var(--muted)}
+mark{background:var(--accent-soft);color:var(--text);padding:0 2px;border-radius:3px;box-shadow:inset 0 -2px 0 var(--accent)}
+.empty{padding:40px 20px;text-align:center;color:var(--muted)}
+
+/* flashcards */
+.fc-wrap{max-width:560px;margin:0 auto 34px}
+.fc-bar{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap}
+.fc-count{font-size:13.5px;color:var(--muted)}
+.dict-tools{position:sticky;top:60px;z-index:5;background:var(--bg);padding:10px 0 8px;margin-bottom:6px}
+.dict-tools .filter{margin-bottom:8px}
+.abc{display:flex;flex-wrap:wrap;gap:4px}
+.abc button{min-width:32px;height:30px;border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--text);cursor:pointer;font-weight:600;font-size:13px}
+.abc button:hover{border-color:var(--primary);color:var(--primary)}
+.tgroup{display:grid;grid-template-columns:44px minmax(0,1fr);gap:12px;margin:0 0 18px;scroll-margin-top:170px}
+.tletter{font-family:"PT Serif",Georgia,serif;font-size:28px;font-weight:700;color:var(--primary);line-height:1;padding-top:12px}
+.terms{display:grid;gap:8px}
+.term{display:grid;grid-template-columns:minmax(0,240px) minmax(0,1fr);gap:6px 20px;padding:14px 16px;border:1px solid var(--border);border-radius:12px;background:var(--surface)}
+.term-name{display:flex;flex-direction:column;gap:3px}
+.term-name b{font-size:15.5px;line-height:1.35}
+.term-en{color:var(--muted);font-size:13px;font-style:italic}
+.term-src{font-size:12.5px;color:var(--primary);text-decoration:none;margin-top:4px}
+.term-src:hover{text-decoration:underline}
+.term-def{margin:0;font-size:14.5px;line-height:1.55}
+@media (max-width:700px){.term{grid-template-columns:minmax(0,1fr)}.tgroup{grid-template-columns:minmax(0,1fr);gap:6px}.tletter{padding-top:0}}
+.fc-def{margin:0;font-size:15px;line-height:1.5;font-family:Inter,system-ui,sans-serif;font-weight:400;max-width:460px}
+.fc-sub{color:var(--primary);font-weight:500}
+@media (max-width:620px){.flashcard{height:380px!important}.fc-face b{font-size:22px}}
+.flashcard{display:block;width:100%;height:320px;perspective:1200px;background:none;border:0;padding:0;cursor:pointer;color:var(--text)}
+.fc-inner{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
+.flashcard.flipped .fc-inner{transform:rotateY(180deg)}
+.fc-face{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:24px;border-radius:18px;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:auto;border:1px solid var(--border);background:var(--surface);box-shadow:var(--shadow);text-align:center}
+.fc-face.back{transform:rotateY(180deg);background:var(--primary-soft);border-color:var(--primary)}
+.fc-face small{font-size:11.5px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);font-weight:600}
+.fc-face b{font-family:"PT Serif",Georgia,serif;font-size:26px;line-height:1.25;font-weight:700}
+.fc-face .known{font-size:12px;color:var(--ok);font-weight:600}
+.fc-ctrl{display:flex;justify-content:center;gap:8px;margin-top:14px;flex-wrap:wrap}
+.hint{text-align:center;font-size:13px;color:var(--muted);margin:10px 0 0}
+.filter{width:100%;height:40px;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--text);padding:0 12px;font:inherit;margin:0 0 12px;outline:none}
+.filter:focus{border-color:var(--primary)}
+
+/* tools */
+.tools{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+@media (max-width:820px){.tools{grid-template-columns:minmax(0,1fr)}}
+.tool{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow);min-width:0}
+.tool.wide{grid-column:1/-1}
+.tool h2{font-size:17px;margin:0 0 4px}
+.tool .sub{font-size:13px;color:var(--muted);margin:0 0 14px}
+.fields{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px;margin:0 0 12px}
+.f{display:flex;flex-direction:column;gap:5px;font-size:12.5px;color:var(--muted);font-weight:500}
+.f input[type=number]{height:38px;border:1px solid var(--border);border-radius:9px;background:var(--surface2);color:var(--text);padding:0 10px;font:inherit;font-size:14.5px;outline:none;width:100%}
+.f input:focus{border-color:var(--primary);background:var(--surface)}
+.f input[type=range]{width:100%;accent-color:var(--primary)}
+.res{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:11px 14px;border-radius:10px;background:var(--surface2);margin:8px 0 0;font-size:14px}
+.res b{font-size:18px}
+.res.ok{background:var(--ok-soft)}.res.ok b{color:var(--ok)}
+.res.bad{background:var(--bad-soft)}.res.bad b{color:var(--bad)}
+.tool .tbl{margin:0 0 4px}
+.q-label{font-size:13px;font-weight:600;margin:12px 0 6px}
+.opinion{margin-top:16px;padding:16px;border-radius:12px;border:1px solid var(--border);background:var(--surface2)}
+.opinion b{display:block;font-size:19px;margin-bottom:4px}
+.opinion i{display:block;color:var(--muted);margin-bottom:6px}
+.timer{font-variant-numeric:tabular-nums;font-size:48px;font-weight:700;letter-spacing:1px;line-height:1.1;margin:6px 0 12px}
+.row{display:flex;gap:8px;flex-wrap:wrap}
+.phase{font-size:14px;margin-top:12px;color:var(--muted)}
+.phase b{color:var(--text)}
+.mini{font-size:13px;color:var(--muted);margin:10px 0 0;padding-left:18px}
+
+/* plan */
+.weeks{display:grid;gap:10px}
+.week{display:grid;grid-template-columns:auto 92px 1fr auto;gap:14px;align-items:center;padding:14px 16px;border:1px solid var(--border);border-radius:12px;background:var(--surface)}
+.week.on{background:var(--ok-soft);border-color:var(--ok)}
+.week input{width:20px;height:20px;accent-color:var(--ok);cursor:pointer;margin:0}
+.wk{font-size:13px;font-weight:700;color:var(--muted)}
+.wt b{display:block;font-weight:600;font-size:14.5px}
+.wt span{font-size:13px;color:var(--muted)}
+@media (max-width:620px){.week{grid-template-columns:auto 1fr;}.wk{grid-column:2}.wt{grid-column:2}.week .btn{grid-column:2;justify-self:start}}
+footer.foot{margin-top:50px;padding-top:18px;border-top:1px solid var(--border);font-size:12.5px;color:var(--muted)}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <button class="iconbtn menu-btn" id="menuBtn" aria-label="Меню"><svg class="i" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+  <a class="brand" href="#/"><span class="logo">AA</span><span class="txt"><b>ACCA AA (F8)</b><small>Audit and Assurance</small></span></a>
+  <div class="search">
+    <svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <input id="q" type="search" placeholder="Поиск по пособию: ISA 705, существенность…" autocomplete="off">
+  </div>
+  <button class="iconbtn" id="themeBtn" aria-label="Сменить тему"><svg class="i" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+</header>
+<div class="layout">
+  <aside class="sidebar"><nav class="nav" id="nav"></nav></aside>
+  <div class="scrim" id="scrim"></div>
+  <main id="main"></main>
+</div>
+
+<script type="text/markdown" id="src"># PRD: Учебное пособие для самоподготовки «ACCA AA (F8) — Audit and Assurance / Аудит и сопутствующие услуги»
+
+| Параметр | Значение |
+|---|---|
+| Продукт | Учебное пособие для самостоятельной подготовки к экзамену ACCA AA (ранее F8) |
+| Формат | Markdown-документ (PRD.md) с теорией, примерами и решениями |
+| Язык | Русский; ключевые термины дублируются на английском в скобках |
+| Охват | Вся программа: разделы A–E Syllabus and Study Guide |
+| Целевая аудитория | Студенты ACCA уровня Applied Skills |
+| Версия | 1.0 |
+| Дата | 16.10.2026 |
+| Статус | Готово к использованию |
+
+> **Важно.** Программа ACCA, Кодекс этики ACCA и Международные стандарты аудита (МСА / ISA) периодически обновляются. Перед экзаменом сверяйте пособие с актуальной версией Syllabus and Study Guide и Examinable Documents на сайте ACCA.
+
+---
+
+## Содержание
+
+1. Обзор продукта
+2. Цели и метрики успеха
+3. Целевая аудитория
+4. Формат экзамена AA
+5. Требования к структуре контента
+6. Нефункциональные требования
+7. Модуль A. Аудиторская среда и регулирование
+8. Модуль B. Планирование и оценка рисков
+9. Модуль C. Система внутреннего контроля
+10. Модуль D. Аудиторские доказательства
+11. Модуль E. Обзор и аудиторское заключение
+12. Техника сдачи экзамена
+13. План самоподготовки
+14. Глоссарий RU/EN
+15. Критерии приёмки (Definition of Done)
+
+---
+
+## 1. Обзор продукта
+
+### 1.1. Проблема
+
+Студенты ACCA, изучающие AA на русском языке, сталкиваются с тремя трудностями:
+
+1. Оригинальные материалы написаны на английском профессиональным языком, что замедляет понимание логики аудита.
+2. Теория стандартов (ISA) изложена абстрактно, и студенту сложно перенести её на кейс экзамена.
+3. Экзамен требует не пересказа теории, а **применения** знаний к сценарию: «определите риск — объясните — предложите ответ аудитора».
+
+### 1.2. Решение
+
+Пособие, в котором каждая тема изложена по единой схеме: **теория простым языком → пример из практики → экзаменационный вопрос → разобранное решение → типичные ошибки**. Английские термины сохранены, чтобы студент мог без потерь перейти к экзамену на английском языке.
+
+### 1.3. Что не входит в объём (Out of scope)
+
+- Национальные стандарты аудита отдельных стран (кроме кратких сравнений).
+- Углублённые темы уровня Strategic Professional (AAA): групповые аудиты, due diligence, форензик.
+- Учёт по МСФО (IFRS) — затрагивается только в объёме, необходимом для аудита.
+
+---
+
+## 2. Цели и метрики успеха
+
+| Цель | Метрика | Целевое значение |
+|---|---|---|
+| Понимание теории | Доля правильных ответов на OT-вопросы после модуля | ≥ 70% |
+| Навык применения | Самооценка решения кейсов по образцу ответа | ≥ 50% баллов (проходной порог) |
+| Полнота охвата | Покрытие учебных результатов (learning outcomes) A–E | 100% |
+| Экзаменационная готовность | Решение пробного экзамена за 3 часа | ≥ 60 баллов |
+
+---
+
+## 3. Целевая аудитория
+
+| Персона | Описание | Потребность |
+|---|---|---|
+| «Новичок в аудите» | Бухгалтер или студент без опыта аудита | Понять базовую логику: зачем аудит и как он устроен |
+| «Практик» | Ассистент аудитора 1–2 года | Систематизировать опыт, выучить «язык ACCA» |
+| «Пересдающий» | Не сдал AA с баллом 40–49 | Отработать технику ответа на кейсы раздела B |
+
+---
+
+## 4. Формат экзамена AA
+
+| Параметр | Описание |
+|---|---|
+| Продолжительность | 3 часа |
+| Формат | Компьютерный экзамен (CBE) |
+| Проходной балл | 50 из 100 |
+| **Раздел A** | 3 OT-кейса по 10 баллов (в каждом 5 вопросов по 2 балла) = 30 баллов |
+| **Раздел B** | 1 вопрос на 30 баллов + 2 вопроса по 20 баллов = 70 баллов |
+| Охват | Вопросы могут затрагивать любые разделы программы A–E |
+
+**Распределение времени:** около 1,8 минуты на балл. Кейс на 10 баллов — 18 минут, вопрос на 20 баллов — 36 минут, на 30 баллов — 54 минуты.
+
+---
+
+## 5. Требования к структуре контента
+
+Каждая тема модуля должна содержать следующие блоки:
+
+| Блок | Назначение | Обязательность |
+|---|---|---|
+| Теория | Объяснение простым языком со ссылкой на стандарт (ISA) | Да |
+| Ключевые термины | Термин RU + EN | Да |
+| Пример | Ситуация из практики | Да |
+| OT-вопросы | Вопросы формата раздела A с ответом и пояснением | Да (на модуль) |
+| Кейс раздела B | Сценарий + требование + образец ответа | Да (на модуль) |
+| Типичные ошибки | Что теряет баллы на экзамене | Рекомендуется |
+
+---
+
+## 6. Нефункциональные требования
+
+1. **Стиль:** деловой, но доступный; без лишних канцеляризмов.
+2. **Терминология:** термин на русском, при первом упоминании — английский эквивалент в скобках.
+3. **Валюта примеров:** доллары ($), как в экзаменационных материалах ACCA.
+4. **Компании в примерах:** вымышленные, с обозначением «Co» по образцу ACCA.
+5. **Решения:** структурированы так, как их ожидает экзаменатор (таблицы «риск — ответ», «недостаток — последствие — рекомендация»).
+
+---
+
+## 7. Модуль A. Аудиторская среда и регулирование (Audit framework and regulation)
+
+### A1. Понятие аудита и задания, обеспечивающего уверенность
+
+**Задание, обеспечивающее уверенность (assurance engagement)** — это работа, в ходе которой специалист собирает доказательства и выражает вывод, повышающий доверие пользователей к информации.
+
+**Пять элементов задания, обеспечивающего уверенность:**
+
+| Элемент | Пояснение | Пример в аудите |
+|---|---|---|
+| Трёхсторонние отношения (three-party relationship) | Практикующий специалист, ответственная сторона, предполагаемые пользователи | Аудитор, руководство, акционеры |
+| Предмет задания (subject matter) | То, что проверяется | Финансовая отчётность |
+| Подходящие критерии (suitable criteria) | Эталон для оценки | МСФО (IFRS) |
+| Достаточные надлежащие доказательства (sufficient appropriate evidence) | Основа вывода | Подтверждения, пересчёты, инспектирование |
+| Письменный отчёт (written report) | Форма вывода | Аудиторское заключение |
+
+**Уровни уверенности:**
+
+| | Разумная уверенность (reasonable assurance) | Ограниченная уверенность (limited assurance) |
+|---|---|---|
+| Пример | Аудит отчётности | Обзорная проверка (review) |
+| Объём процедур | Большой, включая детальные тесты | Ограниченный: в основном запросы и аналитика |
+| Форма вывода | Позитивная: «отчётность отражает достоверно во всех существенных аспектах…» | Негативная: «ничто не привлекло нашего внимания…» |
+
+**Почему уверенность не бывает абсолютной (ограничения аудита):**
+- аудит строится на выборке, а не на проверке 100% операций;
+- многие статьи требуют суждений и оценок (резервы, обесценение);
+- доказательства чаще убеждающие (persuasive), чем окончательные (conclusive);
+- система внутреннего контроля имеет внутренние ограничения;
+- мошенничество может быть скрыто сговором или подделкой документов;
+- аудит проводится в ограниченные сроки с учётом затрат.
+
+**Зачем нужен аудит:** собственники (акционеры) не управляют компанией сами — это делают директора. Возникает **агентская проблема**: интересы директоров могут не совпадать с интересами собственников. Независимый аудитор снижает информационную асимметрию.
+
+### A2. Регулирование внешнего аудита
+
+**Назначение аудитора:** как правило, акционерами на общем собрании (по рекомендации совета директоров / аудиторского комитета).
+
+**Права аудитора:**
+- доступ к учётным записям и документам в любое время;
+- право получать информацию и объяснения от должностных лиц;
+- право получать уведомления и присутствовать на общих собраниях и выступать там;
+- при отставке или смещении — право на заявление (statement of circumstances) для акционеров.
+
+**Обязанность аудитора:** сформировать и выразить мнение о том, представляет ли финансовая отчётность достоверную картину (true and fair view) в соответствии с применимой концепцией.
+
+**Стандарты:** Международные стандарты аудита (ISA) разрабатывает IAASB (Совет по международным стандартам аудита и уверенности). Ключевые понятия ISA 200: **профессиональный скептицизм** (professional scepticism) — критическое отношение к доказательствам; **профессиональное суждение** (professional judgement).
+
+### A3. Корпоративное управление (Corporate governance)
+
+**Корпоративное управление** — система, посредством которой компании направляются и контролируются.
+
+**Ключевые принципы (на примере UK Corporate Governance Code):** разделение ролей председателя и генерального директора, наличие независимых неисполнительных директоров (NEDs), прозрачное вознаграждение, ответственность совета за риск-менеджмент и внутренний контроль, регулярный диалог с акционерами.
+
+**Аудиторский комитет (audit committee)** состоит из независимых неисполнительных директоров; хотя бы один член должен иметь актуальный финансовый опыт.
+
+**Функции аудиторского комитета:**
+- контроль целостности финансовой отчётности;
+- обзор системы внутреннего контроля и риск-менеджмента;
+- контроль работы внутреннего аудита;
+- рекомендации по назначению и вознаграждению внешнего аудитора, оценка его независимости;
+- утверждение политики оказания внешним аудитором неаудиторских услуг;
+- механизм «горячей линии» (whistleblowing).
+
+**Внутренний и внешний аудит — сравнение:**
+
+| Критерий | Внутренний аудит | Внешний аудит |
+|---|---|---|
+| Цель | Помощь руководству в улучшении контроля и процессов | Мнение о достоверности отчётности |
+| Кому отчитывается | Аудиторскому комитету / совету | Акционерам |
+| Статус | Сотрудники компании или аутсорсинг | Независимая внешняя фирма |
+| Объём | Определяется руководством, любые операционные вопросы | Определяется законом и ISA |
+| Обязательность | Зависит от регулирования/кодекса | Обязателен для многих компаний по закону |
+
+**Аутсорсинг внутреннего аудита.** Плюсы: доступ к экспертам, гибкость, снижение затрат на персонал, независимость. Минусы: слабее знание бизнеса, риск утечки информации, угроза независимости, если услугу оказывает внешний аудитор.
+
+### A4. Профессиональная этика (Professional ethics, ACCA Code of Ethics and Conduct)
+
+**Пять фундаментальных принципов:**
+
+| Принцип | Суть простыми словами |
+|---|---|
+| Честность (integrity) | Быть прямым и честным во всех отношениях |
+| Объективность (objectivity) | Не допускать предвзятости, конфликта интересов и чужого давления |
+| Профессиональная компетентность и должная тщательность (professional competence and due care) | Поддерживать знания и работать по стандартам |
+| Конфиденциальность (confidentiality) | Не раскрывать информацию без надлежащего основания |
+| Профессиональное поведение (professional behaviour) | Соблюдать законы, не дискредитировать профессию |
+
+**Пять угроз независимости:**
+
+| Угроза | Пример |
+|---|---|
+| Личная заинтересованность (self-interest) | Аудитор владеет акциями клиента; высокая доля гонорара от одного клиента |
+| Самопроверка (self-review) | Фирма вела бухучёт клиента, а затем его же аудирует |
+| Защита интересов (advocacy) | Аудитор представляет клиента в налоговом споре |
+| Близкое знакомство (familiarity) | Партнёр 10 лет ведёт одного клиента; родственник аудитора — финансовый директор клиента |
+| Запугивание (intimidation) | Клиент грозит сменить аудитора, если не будет выдано «чистое» заключение |
+
+**Меры защиты (safeguards)** — действия, которые устраняют угрозу или снижают её до приемлемого уровня: замена члена команды, независимая проверка работы другим партнёром, разделение команд аудита и неаудиторских услуг, отказ от услуги или от клиента.
+
+**Ключевые правила Кодекса (запоминаем):**
+
+| Ситуация | Правило |
+|---|---|
+| Прямая финансовая заинтересованность в клиенте | Запрещена для члена команды и его близких родственников — акции нужно продать или исключить человека из команды |
+| Подарки и гостеприимство | Допустимы только если тривиальны и несущественны |
+| Займы от клиента | Допустимы только у банка-клиента на обычных коммерческих условиях |
+| Условные гонорары (contingent fees) за аудит | Запрещены |
+| Просроченные гонорары | Угроза личной заинтересованности; существенная просрочка — повод не продолжать аудит до оплаты |
+| Гонорары от клиента-PIE > 15% совокупных доходов фирмы два года подряд | Раскрытие TCWG и независимая проверка работы (pre- или post-issuance review) |
+| Длительная связь, клиент-PIE | Ключевой партнёр — не более 7 лет; затем период охлаждения (для руководителя задания — 5 лет) |
+| Переход сотрудника аудитора к клиенту | Угроза близкого знакомства и запугивания; оценка и меры защиты |
+| Неаудиторские услуги для клиента-PIE | Многие запрещены (например, ведение учёта, подготовка отчётности) |
+
+**Конфиденциальность — когда раскрытие допустимо:**
+- **обязательное раскрытие** — по требованию закона (подозрения в отмывании денег, терроризме, по решению суда);
+- **добровольное раскрытие** — в общественных интересах или для защиты собственных интересов аудитора в суде;
+- **с согласия клиента**.
+
+**Конфликт интересов** (два клиента-конкурента): уведомить обоих клиентов и получить согласие, использовать разные команды, «информационные барьеры» (information barriers), контроль со стороны независимого партнёра.
+
+---
+
+### Модуль A — OT-вопросы (раздел A экзамена)
+
+**Вопрос A.1.** Что из перечисленного является ограничением аудита?
+
+1. Аудитор проверяет все операции компании
+2. Аудиторские доказательства чаще убеждающие, чем окончательные
+3. Аудитор отвечает за подготовку финансовой отчётности
+4. Аудитор даёт абсолютную уверенность
+
+> **Ответ: 2.** Варианты 1 и 4 неверны — аудит основан на выборке и даёт разумную, а не абсолютную уверенность. Вариант 3 неверен — отчётность готовит руководство.
+
+**Вопрос A.2.** Гонорары от листингового клиента Мак Co составили 16% совокупных доходов аудиторской фирмы в 20X4 и 17% в 20X5 году. Какое действие требуется?
+
+1. Немедленно отказаться от аудита
+2. Никаких действий не требуется
+3. Раскрыть ситуацию лицам, отвечающим за корпоративное управление, и провести независимую проверку работы
+4. Снизить гонорар до 10%
+
+> **Ответ: 3.** Превышение порога 15% два года подряд требует раскрытия и независимой проверки (pre- или post-issuance review). Автоматического отказа Кодекс не требует.
+
+**Вопрос A.3.** Аудиторская фирма подготовила для клиента расчёт отложенного налога, который вошёл в отчётность. Какая угроза возникает?
+
+1. Защита интересов
+2. Самопроверка
+3. Запугивание
+4. Близкое знакомство
+
+> **Ответ: 2.** Аудитор будет проверять собственную работу.
+
+---
+
+### Модуль A — Кейс раздела B
+
+**Сценарий.** Вы — менеджер аудиторской фирмы Ли & Ко. Ваша фирма проводит аудит Тюльпан Co, листинговой компании, за год, закончившийся 31 декабря 20X5.
+
+1. Партнёр по заданию проводит аудит Тюльпан Co восьмой год подряд.
+2. Финансовый директор Тюльпан Co предложил команде аудита бесплатную неделю отдыха в принадлежащем компании отеле в благодарность за «быструю и лёгкую проверку».
+3. Гонорар за аудит прошлого года до сих пор не оплачен; сумма значительна.
+4. Тюльпан Co попросила фирму помочь в отборе нового финансового контролёра и провести собеседования.
+5. Ассистент аудитора, Анна, унаследовала небольшой пакет акций Тюльпан Co.
+
+**Требование (10 баллов):** определите и объясните пять этических угроз и предложите меры защиты по каждой.
+
+**Образец решения:**
+
+| Угроза и объяснение | Мера защиты |
+|---|---|
+| **1. Длительная связь — угроза близкого знакомства.** Для клиента-PIE ключевой партнёр не должен вести аудит более 7 лет. Партнёр работает 8-й год, лимит превышен, он может утратить скептицизм. | Немедленно заменить партнёра по заданию; он не должен участвовать в аудите в течение периода охлаждения (5 лет). |
+| **2. Гостеприимство — угроза личной заинтересованности и близкого знакомства.** Неделя отдыха не является тривиальной и несущественной; формулировка «за лёгкую проверку» указывает на попытку повлиять на объективность. | Отказаться от предложения; напомнить команде о политике фирмы по подаркам. |
+| **3. Неоплаченный гонорар — угроза личной заинтересованности.** Существенная задолженность может восприниматься как заём клиенту; аудитор может не захотеть выдавать модифицированное заключение, опасаясь не получить оплату. | Обсудить с аудиторским комитетом; получить оплату до начала аудита 20X5; если оплата не получена — рассмотреть отказ от задания. |
+| **4. Подбор персонала — угрозы личной заинтересованности, близкого знакомства и запугивания.** Финансовый контролёр — ключевая должность для отчётности; аудитор будет проверять работу выбранного им человека. Для клиента-PIE такие услуги в отношении ключевых финансовых должностей запрещены. | Отказаться от услуги. Допустимо лишь технически просмотреть резюме кандидатов, без принятия решения. |
+| **5. Финансовая заинтересованность — угроза личной заинтересованности.** Прямое владение акциями клиента запрещено для члена команды, даже при небольшой сумме. | Анна должна продать акции как можно скорее; до продажи — исключить её из команды; проверить уже выполненную ею работу. |
+
+**Типичные ошибки:** назвать угрозу без объяснения, почему это угроза в данном сценарии; предлагать общие меры («быть осторожнее») вместо конкретных действий.
+
+---
+
+## 8. Модуль B. Планирование и оценка рисков (Planning and risk assessment)
+
+### B1. Принятие клиента и аудиторского задания (ISA 210, ISQM 1, ISA 220)
+
+**Перед принятием нового клиента аудитор проверяет:**
+- **этику и независимость:** нет ли запрещённых связей с клиентом;
+- **компетентность и ресурсы:** есть ли у фирмы специалисты и время;
+- **честность руководства:** репутация клиента, его владельцев и директоров;
+- **процедуры «знай своего клиента» и ПОД (AML/KYC):** идентификация клиента и бенефициаров;
+- **риск задания:** финансовое положение, отрасль, «агрессивность» отчётности;
+- **профессиональное согласование (professional clearance):** с разрешения клиента написать предыдущему аудитору и узнать, нет ли профессиональных причин отказаться от задания.
+
+**Предварительные условия аудита (preconditions, ISA 210):**
+1. применимая концепция подготовки отчётности приемлема;
+2. руководство признаёт свою ответственность за подготовку отчётности, за внутренний контроль и за предоставление аудитору доступа ко всей информации.
+
+**Письмо-обязательство (engagement letter)** — договорная основа аудита. Содержит: цель и объём аудита; ответственность аудитора; ответственность руководства; применимую концепцию отчётности; ожидаемую форму заключения; указание на неизбежный риск необнаружения существенного искажения; порядок расчёта гонорара; сроки. Пересматривается при смене руководства, изменении бизнеса, требований закона или если руководство неправильно понимает цель аудита.
+
+**Управление качеством:**
+- **ISQM 1** — система управления качеством на уровне фирмы;
+- **ISQM 2** — проверка качества выполнения задания (engagement quality review), обязательна для листинговых клиентов;
+- **ISA 220 (Revised)** — качество на уровне конкретного задания: партнёр отвечает за руководство (direction), надзор (supervision) и обзор (review) работы команды.
+
+### B2. Цель и общие принципы, понимание бизнеса клиента
+
+**Планирование (ISA 300)** включает:
+- **общую стратегию аудита (overall audit strategy):** объём, сроки, направление аудита, ресурсы;
+- **план аудита (audit plan):** характер, сроки и объём процедур оценки рисков и последующих процедур.
+
+**Зачем планировать:** уделить внимание важным областям, вовремя выявить проблемы, правильно распределить персонал, организовать работу эффективно, облегчить руководство и обзор работы.
+
+**Понимание компании и её среды (ISA 315 (Revised 2019))** — аудитор изучает: отрасль и регулирование; характер бизнеса (операции, собственники, финансирование, инвестиции); учётную политику; показатели и их измерение; систему внутреннего контроля.
+
+**Процедуры оценки рисков:** запросы руководству и другим лицам; аналитические процедуры; наблюдение и инспектирование; обсуждение внутри команды (engagement team discussion).
+
+**Промежуточный и финальный аудит:**
+
+| Промежуточный (interim) | Финальный (final) |
+|---|---|
+| Проводится в течение года | После окончания года |
+| Понимание бизнеса, оценка рисков, тесты контролей, ранние детальные тесты | Проверка сальдо на отчётную дату, событий после отчётной даты, непрерывности деятельности, заключение |
+
+### B3. Оценка риска существенного искажения
+
+**Модель аудиторского риска:**
+
+> **Аудиторский риск = Неотъемлемый риск × Риск средств контроля × Риск необнаружения**
+>
+> Audit risk = Inherent risk × Control risk × Detection risk
+
+| Компонент | Что означает | Кто контролирует |
+|---|---|---|
+| Неотъемлемый риск (inherent risk) | Подверженность статьи искажению до учёта контролей | Не зависит от аудитора |
+| Риск средств контроля (control risk) | Контроли клиента не предотвратят и не обнаружат искажение | Не зависит от аудитора |
+| Риск необнаружения (detection risk) | Процедуры аудитора не выявят искажение | **Управляется аудитором** |
+
+Неотъемлемый риск × риск средств контроля = **риск существенного искажения (RoMM)**. Чем он выше, тем ниже должен быть риск необнаружения — значит, больше и качественнее процедуры.
+
+**Факторы неотъемлемого риска по ISA 315 (Revised 2019):**
+- сложность (complexity);
+- субъективность (subjectivity);
+- изменения (change);
+- неопределённость (uncertainty);
+- подверженность искажению из-за предвзятости руководства или мошенничества (susceptibility to misstatement due to management bias or fraud).
+
+**Значительный риск (significant risk)** — риск, находящийся у верхней границы «спектра неотъемлемого риска». Требует особого внимания.
+
+**Формула ответа на экзамене (самое важное в модуле B):**
+
+> **Риск** (факт из сценария) → **объяснение** (какая статья, какое утверждение, в какую сторону исказится: завышение / занижение) → **ответ аудитора** (конкретная процедура).
+
+### B4. Существенность (ISA 320)
+
+**Существенность (materiality)** — величина искажения, которая может повлиять на экономические решения пользователей.
+
+**Типичные ориентиры:**
+
+| База | Диапазон |
+|---|---|
+| Выручка | 0,5–1% |
+| Прибыль до налогообложения | 5–10% |
+| Итог активов | 1–2% |
+
+**Существенность для выполнения процедур (performance materiality)** — ниже общей существенности (обычно 50–75%), чтобы снизить риск того, что сумма несущественных по отдельности искажений превысит общую существенность.
+
+**Существенность бывает и качественной:** ошибка в операциях со связанными сторонами или в вознаграждении директоров существенна независимо от суммы.
+
+**Пример расчёта.** Данные Береза Co: выручка $48 млн, прибыль до налогообложения $3,2 млн, итог активов $26 млн.
+
+| База | Диапазон | Расчёт |
+|---|---|---|
+| Выручка | 0,5–1% | $240 000 – $480 000 |
+| Прибыль до налогообложения | 5–10% | $160 000 – $320 000 |
+| Итог активов | 1–2% | $260 000 – $520 000 |
+
+**Решение и обоснование.** Компания коммерческая, пользователи (акционеры) ориентируются на прибыль. Однако в этом году клиент впервые получил банковский кредит с ковенантом по прибыли — риск выше, поэтому выбираем значение у нижней границы, около **$200 000**. Существенность для процедур при 75%: $200 000 × 75% = **$150 000**; при повышенном риске — ниже, например 60% = $120 000.
+
+> Экзаменатор оценивает не «правильное» число, а **обоснование выбора базы и процента** с учётом рисков сценария.
+
+### B5. Мошенничество, законы и нормативные акты (ISA 240, ISA 250)
+
+**Виды мошенничества:**
+- **фальсификация отчётности** (fraudulent financial reporting) — манипулирование цифрами, например завышение выручки ради бонуса;
+- **незаконное присвоение активов** (misappropriation of assets) — кража денег, запасов, «фиктивные сотрудники».
+
+**Ответственность:**
+- **руководство и TCWG** — предотвращать и выявлять мошенничество (основная ответственность);
+- **аудитор** — получить разумную уверенность, что отчётность не содержит существенных искажений вследствие мошенничества или ошибки; сохранять профессиональный скептицизм.
+
+**Презюмируемые риски мошенничества (ISA 240):** признание выручки и обход контролей руководством (management override). Риск обхода контролей не может быть опровергнут.
+
+**ISA 250:** аудитор получает доказательства соблюдения законов, которые **напрямую влияют** на отчётность (налоговые, пенсионные), и выполняет ограниченные процедуры (запросы, инспектирование переписки с регуляторами) по **прочим** законам (лицензии, охрана труда, экология).
+
+### B6. Аналитические процедуры на этапе планирования
+
+| Показатель | Формула |
+|---|---|
+| Валовая маржа | Валовая прибыль / Выручка × 100% |
+| Оборачиваемость дебиторской задолженности (дни) | Дебиторская задолженность / Выручка × 365 |
+| Оборачиваемость запасов (дни) | Запасы / Себестоимость × 365 |
+| Оборачиваемость кредиторской задолженности (дни) | Кредиторская задолженность / Закупки (или себестоимость) × 365 |
+| Текущая ликвидность | Оборотные активы / Краткосрочные обязательства |
+
+**Пример.** Дебиторская задолженность выросла с $4 млн до $6 млн, выручка — с $40 млн до $42 млн.
+Дни: 20X4 — 4/40 × 365 = **36,5 дня**; 20X5 — 6/42 × 365 = **52,1 дня**.
+**Вывод:** клиенты платят медленнее → риск того, что часть долгов безнадёжна и **оценка (valuation)** дебиторки завышена, резерв под ожидаемые кредитные убытки недостаточен.
+
+### B7. Документирование (ISA 230)
+
+Документация должна позволять **опытному аудитору, не участвовавшему в задании**, понять характер, сроки и объём процедур, их результаты и сделанные выводы. Финальный архив формируется, как правило, в течение **60 дней** после даты заключения; после этого документы не удаляются. Хранение — как правило не менее **5 лет** (если закон не требует дольше).
+
+---
+
+### Модуль B — OT-вопросы
+
+**Вопрос B.1.** Какой компонент аудиторского риска может контролировать аудитор?
+
+1. Неотъемлемый риск
+2. Риск средств контроля
+3. Риск необнаружения
+4. Риск существенного искажения
+
+> **Ответ: 3.** Аудитор меняет характер, сроки и объём процедур, чтобы снизить риск необнаружения.
+
+**Вопрос B.2.** Какой из рисков ISA 240 считается неопровержимым?
+
+1. Риск признания выручки
+2. Риск обхода контролей руководством
+3. Риск хищения запасов
+4. Риск ошибок в расчёте зарплаты
+
+> **Ответ: 2.** Риск признания выручки — презюмируемый, но может быть опровергнут при обосновании; риск обхода контролей — нет.
+
+**Вопрос B.3.** Что НЕ является предварительным условием аудита по ISA 210?
+
+1. Приемлемая концепция отчётности
+2. Признание руководством ответственности за внутренний контроль
+3. Отсутствие у клиента убытков
+4. Признание руководством обязанности предоставить доступ к информации
+
+> **Ответ: 3.** Убыточность не препятствует аудиту.
+
+---
+
+### Модуль B — Кейс раздела B
+
+**Сценарий.** Сосна Co производит и продаёт мебель. Отчётный год закончился 30 июня 20X5. Существенность — $300 000. Из протокола планирования:
+
+1. В марте 20X5 внедрена новая система учёта запасов. Остатки перенесены из старой системы вручную.
+2. В течение года компания впервые переоценила свои здания; прирост стоимости составил $1,4 млн. Оценку провёл внешний оценщик.
+3. Дебиторская задолженность выросла на 35% при росте выручки на 5%.
+4. Бонус финансового директора привязан к прибыли до налогообложения.
+5. Инвентаризация запасов проводится 7 июля, через неделю после отчётной даты.
+6. С 20X5 года компания даёт 3-летнюю гарантию на новую линейку диванов. Резерв под гарантии не создан.
+
+**Требование (12 баллов):** опишите шесть аудиторских рисков и объясните ответ аудитора на каждый.
+
+**Образец решения:**
+
+| Аудиторский риск | Ответ аудитора |
+|---|---|
+| **1. Новая система учёта запасов.** Ручной перенос данных может привести к ошибкам; запасы могут быть завышены или занижены (полнота и существование). Кроме того, операции года обрабатывались двумя системами. | Документировать и протестировать новую систему; сверить остатки на дату перехода между старой и новой системой; обсудить с руководством проверку правильности переноса. |
+| **2. Переоценка зданий.** Переоценка субъективна, стоимость может быть завышена (оценка). Кроме того, по IAS 16 переоценке подлежит весь класс активов, нужно корректно пересчитать амортизацию и отразить прирост в прочем совокупном доходе. | Оценить компетентность, объективность и квалификацию оценщика (ISA 500 / ISA 620); проверить, что переоценён весь класс; пересчитать амортизацию; проверить отражение прироста в резерве переоценки и раскрытия. |
+| **3. Рост дебиторской задолженности.** Рост непропорционален выручке → риск безнадёжных долгов; дебиторка может быть завышена (оценка). | Проанализировать возрастную структуру; проверить оплату после отчётной даты; обсудить резерв с руководством, проверить его достаточность. |
+| **4. Бонус от прибыли.** Риск манипулирования прибылью: завышение выручки, занижение расходов и резервов. | Повысить профессиональный скептицизм; усилить тесты отсечения выручки и проверку оценочных значений; проверить ручные проводки в конце года. |
+| **5. Инвентаризация после отчётной даты.** Количество на 7 июля нужно «откатить» к 30 июня; ошибки в откате приведут к искажению запасов (существование, полнота). | Присутствовать на инвентаризации; протестировать операции между 30 июня и 7 июля (поступления и отгрузки) для отката к отчётной дате. |
+| **6. Гарантийный резерв не создан.** Существует обязательство по IAS 37 (прошлое событие — продажа с гарантией); резерв и расходы занижены (полнота). | Обсудить с руководством, оценить претензии по гарантии после отчётной даты и отраслевые данные; рассчитать ожидаемую величину резерва; при существенности — потребовать корректировку. |
+
+**Типичные ошибки:** описывать бизнес-риск («продажи упадут») вместо аудиторского риска (какая статья исказится и как); писать «проверить запасы» вместо конкретной процедуры.
+
+---
+
+## 9. Модуль C. Система внутреннего контроля (Internal control)
+
+### C1. Компоненты системы внутреннего контроля (ISA 315 (Revised 2019))
+
+| Компонент | Простое объяснение | Пример |
+|---|---|---|
+| Контрольная среда (control environment) | «Тон сверху»: отношение руководства к контролю, честность, структура | Кодекс поведения, независимый аудиторский комитет |
+| Процесс оценки рисков компанией (entity's risk assessment process) | Как компания выявляет бизнес-риски | Риск-реестр, регулярный анализ рисков |
+| Процесс мониторинга системы внутреннего контроля | Проверка, что контроли работают | Работа внутреннего аудита |
+| Информационная система и коммуникация | Как операции записываются и обрабатываются | Учётная система, регламенты |
+| Контрольные действия (control activities) | Конкретные процедуры контроля | Авторизация, сверки, разделение обязанностей |
+
+**Виды контрольных действий** (англ. мнемоника для запоминания — *SPAMSOAP*): разделение обязанностей (Segregation of duties), физические контроли (Physical), авторизация и утверждение (Authorisation), управленческие контроли (Management), надзор (Supervision), организационная структура (Organisation), арифметическая точность и сверки (Arithmetical), кадровые контроли (Personnel).
+
+**Ограничения внутреннего контроля:** человеческие ошибки; сговор сотрудников; обход контролей руководством; затраты на контроль не должны превышать выгоду; контроли рассчитаны на обычные, а не нетипичные операции.
+
+**ИТ-контроли:**
+- **общие ИТ-контроли (general IT controls):** управление доступом и паролями, резервное копирование, контроль изменений программ, физическая защита серверов;
+- **прикладные контроли (application controls):** контроль ввода (проверка допустимых значений, контрольные суммы), контроль обработки, контроль вывода.
+
+### C2. Документирование систем
+
+| Метод | Плюсы | Минусы |
+|---|---|---|
+| Описание (narrative notes) | Простота, подходит для простых систем | Громоздко для сложных систем, трудно увидеть пробелы |
+| Блок-схемы (flowcharts) | Наглядно, легко увидеть отсутствие контроля | Требует навыка, трудно обновлять |
+| Анкеты (ICQ / ICEQ) | Быстро, полно, стандартизировано | Шаблонность, риск формальных ответов, «ответы да/нет» без доказательств |
+
+**Сквозная проверка (walkthrough test)** — прослеживание одной операции через всю систему, чтобы убедиться, что документирование верно.
+
+### C3. Тесты средств контроля и процедуры проверки по существу
+
+| | Тест средств контроля (test of control) | Процедура по существу (substantive procedure) |
+|---|---|---|
+| Цель | Подтвердить, что контроль **работает эффективно** весь период | Выявить **существенные искажения** в суммах |
+| Вопрос | «Контроль выполнялся?» | «Сумма правильная?» |
+| Пример | Проверить подпись руководителя на заказах на покупку | Сверить сальдо кредитора с выпиской поставщика |
+
+Если контроли эффективны, аудитор может **сократить объём процедур по существу**. Процедуры по существу по существенным статьям выполняются **всегда**.
+
+### C4. Ключевые контроли по циклам
+
+**Цикл продаж (sales):**
+
+| Цель контроля | Контроль | Тест контроля |
+|---|---|---|
+| Продажи только кредитоспособным клиентам | Кредитные лимиты, утверждённые менеджером | Выборка новых клиентов: проверить наличие утверждённого лимита |
+| Все отгрузки выставлены в счетах (полнота) | Последовательная нумерация накладных и сверка со счетами | Проверить последовательность номеров; проследить накладные до счетов |
+| Правильные цены | Цены из утверждённого прайс-листа в системе | Сравнить цены в выборке счетов с прайс-листом |
+| Учёт в правильном периоде | Сверка накладных на конец года | Проверить отсечение по накладным до/после отчётной даты |
+
+**Цикл закупок (purchases):** утверждение заказов в пределах полномочий; утверждённый список поставщиков; трёхстороннее сопоставление «заказ — приходная накладная — счёт» (three-way match); утверждение платежей; ежемесячная сверка с выписками поставщиков.
+
+**Заработная плата (payroll):** авторизация приёма и увольнения кадровой службой; контроль доступа к изменению постоянных данных; учёт рабочего времени; утверждение начислений руководителем; разделение обязанностей между расчётом и выплатой; сверка платёжной ведомости с главной книгой.
+
+**Запасы (inventory):** физическая охрана склада; регулярные выборочные инвентаризации; утверждение списаний; выявление устаревших запасов.
+
+**Денежные средства (cash):** ежемесячная банковская выверка, проверенная независимым лицом; две подписи на крупных платежах; ограниченный доступ к онлайн-банку.
+
+**Внеоборотные активы:** утверждение капитальных затрат; реестр основных средств и его сверка с главной книгой и физическим наличием.
+
+### C5. Сообщение о недостатках (ISA 265)
+
+**Значительные недостатки (significant deficiencies)** в контроле аудитор сообщает **письменно** лицам, отвечающим за корпоративное управление (TCWG). Прочие недостатки — руководству (устно или письменно).
+
+**Письмо руководству (management letter / report to management)** обычно содержит: недостаток, его последствие и рекомендацию. Указывается, что аудит не предназначен для выявления всех недостатков, а письмо подготовлено исключительно для руководства.
+
+**Формат ответа на экзамене:**
+
+> **Недостаток** (факт из сценария) → **Последствие** (что может пойти не так для компании) → **Рекомендация** (конкретный контроль). Иногда дополнительно — **тест средств контроля**.
+
+---
+
+### Модуль C — OT-вопросы
+
+**Вопрос C.1.** Какая процедура является тестом средств контроля?
+
+1. Пересчитать начисление амортизации за год
+2. Наблюдать за раздачей заработной платы и идентификацией сотрудников
+3. Направить запрос-подтверждение дебиторам
+4. Сравнить валовую маржу с прошлым годом
+
+> **Ответ: 2.** Наблюдение проверяет работу контроля. Варианты 1, 3, 4 — процедуры по существу.
+
+**Вопрос C.2.** Что является ограничением системы внутреннего контроля?
+
+1. Разделение обязанностей
+2. Сговор сотрудников
+3. Банковская выверка
+4. Последовательная нумерация документов
+
+> **Ответ: 2.** Сговор позволяет обойти даже разделение обязанностей.
+
+**Вопрос C.3.** Кому аудитор ОБЯЗАН письменно сообщить о значительных недостатках внутреннего контроля?
+
+1. Акционерам
+2. Регулятору
+3. Лицам, отвечающим за корпоративное управление
+4. Внутреннему аудитору
+
+> **Ответ: 3.** Требование ISA 265.
+
+---
+
+### Модуль C — Кейс раздела B
+
+**Сценарий.** Кедр Co — оптовый продавец стройматериалов. Описание системы продаж:
+
+1. Заказы принимаются по телефону; продавец записывает их от руки на непронумерованных бланках.
+2. Кредитные лимиты новых клиентов устанавливает сам продавец, принявший заказ, — чтобы не терять продажи.
+3. Цены продавцы вводят в счёт вручную; прайс-лист обновляется раз в год.
+4. Накладные на отгрузку не сверяются со счетами.
+5. Один бухгалтер ведёт учёт дебиторов, получает платежи и выполняет банковскую выверку.
+6. Дебиторы с просрочкой более 90 дней не анализируются.
+
+**Требование (12 баллов):** определите шесть недостатков, объясните последствия и дайте рекомендации.
+
+**Образец решения:**
+
+| Недостаток | Последствие | Рекомендация |
+|---|---|---|
+| 1. Заказы на непронумерованных бланках | Заказы могут быть утеряны и не выполнены → потеря выручки и репутации | Вводить заказы сразу в систему с автоматической нумерацией; регулярно проверять невыполненные заказы |
+| 2. Лимиты устанавливает продавец | Продавец заинтересован в продажах → отгрузка неплатёжеспособным клиентам, безнадёжные долги | Кредитные лимиты устанавливает отдел кредитного контроля по результатам проверки клиента; утверждение лимитов руководителем |
+| 3. Ручной ввод цен, редкое обновление прайса | Ошибки или умышленное занижение цен → потеря выручки | Цены подтягиваются системой автоматически из прайс-листа; изменения прайса — только уполномоченное лицо; регулярное обновление |
+| 4. Накладные не сверяются со счетами | Отгрузки без счетов → занижение выручки и дебиторки | Последовательная нумерация накладных; ежедневная сверка накладных со счетами и расследование расхождений |
+| 5. Отсутствие разделения обязанностей | Бухгалтер может похитить деньги и скрыть это в учёте (teeming and lading) | Разделить функции: учёт дебиторов, получение денег и банковская выверка — разные лица; выверку проверяет руководитель |
+| 6. Просроченные долги не анализируются | Безнадёжные долги не выявляются, взыскание не ведётся, резерв недостаточен | Ежемесячный анализ возрастной структуры; меры по взысканию; приостановка отгрузок должникам |
+
+**Типичные ошибки:** рекомендация, не связанная с недостатком; повтор недостатка «наоборот» («начать сверять» без указания кто, когда и как фиксирует результат).
+
+---
+
+## 10. Модуль D. Аудиторские доказательства (Audit evidence)
+
+### D1. Достаточность и надлежащий характер доказательств (ISA 500)
+
+- **Достаточность (sufficiency)** — **количество** доказательств. Зависит от риска (выше риск — больше доказательств) и качества доказательств.
+- **Надлежащий характер (appropriateness)** — **качество**: уместность (relevance) и надёжность (reliability).
+
+**Надёжность доказательств (от более надёжных к менее):**
+- из внешнего независимого источника > из внутреннего источника клиента;
+- полученные аудитором напрямую (наблюдение, пересчёт) > полученные косвенно (запрос);
+- документальные > устные;
+- оригиналы > копии;
+- внутренние доказательства надёжнее, если контроли клиента эффективны.
+
+### D2. Утверждения в отчётности (financial statement assertions)
+
+| Утверждение | Классы операций (ОПиУ) | Сальдо счетов (баланс) | Простое объяснение |
+|---|---|---|---|
+| Возникновение / существование (occurrence / existence) | ✓ | ✓ | Операция действительно была / актив существует |
+| Полнота (completeness) | ✓ | ✓ | Ничего не пропущено |
+| Точность / оценка (accuracy / valuation and allocation) | ✓ | ✓ | Суммы правильные, актив не завышен |
+| Отсечение (cut-off) | ✓ | | Операция в правильном периоде |
+| Классификация (classification) | ✓ | ✓ | Правильный счёт |
+| Права и обязанности (rights and obligations) | | ✓ | Компания владеет активом / обязана по долгу |
+| Представление (presentation) | ✓ | ✓ | Корректно раскрыто и понятно описано |
+
+**Направление тестирования:**
+- **на завышение (существование / возникновение):** от записи в учёте **к** первичному документу;
+- **на занижение (полнота):** от первичного документа **к** записи в учёте.
+
+> *Пример:* чтобы проверить **полноту** выручки, берём выборку отгрузочных накладных и прослеживаем их до счетов и книги продаж. Обратное направление (от книги к накладным) проверит **возникновение**.
+
+### D3. Аудиторские процедуры
+
+| Процедура | Пример |
+|---|---|
+| Инспектирование (inspection) | Осмотр договора аренды, осмотр оборудования |
+| Наблюдение (observation) | Наблюдение за инвентаризацией |
+| Внешнее подтверждение (external confirmation) | Запрос в банк, письма дебиторам |
+| Пересчёт (recalculation) | Пересчёт амортизации |
+| Повторное выполнение (reperformance) | Самостоятельно повторить банковскую выверку |
+| Аналитические процедуры (analytical procedures) | Сравнение маржи с прошлым годом |
+| Запрос (enquiry) | Беседа с юристом о судебных исках |
+
+**Правило хорошей процедуры на экзамене:** *глагол + источник + цель.*
+- ❌ «Проверить дебиторскую задолженность».
+- ✅ «Для выборки дебиторов на конец года **проверить** поступление денег после отчётной даты **по банковским выпискам**, чтобы подтвердить **существование и оценку** задолженности».
+
+### D4. Аудиторская выборка (ISA 530)
+
+**Риск выборки (sampling risk)** — риск, что вывод по выборке отличается от вывода, который был бы сделан по всей совокупности.
+
+**Методы отбора:**
+
+| Метод | Суть | Статистический? |
+|---|---|---|
+| Случайный (random) | Генератор случайных чисел | Да |
+| Систематический (systematic) | Каждый n-й элемент со случайной стартовой точки | Да |
+| Выборка в денежных единицах (monetary unit sampling, MUS) | Каждый n-й доллар; крупные суммы попадают с большей вероятностью | Да |
+| Бессистемный (haphazard) | Без определённой системы, но без предвзятости | Нет |
+| Блочный (block) | Сплошной блок (например, все операции марта) | Нет; редко уместен |
+
+**Пример.** Совокупность дебиторов — $2 400 000; размер выборки — 60. Интервал MUS = 2 400 000 / 60 = **$40 000**. При случайном старте $15 000 отбираются элементы, содержащие $15 000-й, $55 000-й, $95 000-й доллар и т.д. Любой остаток больше $40 000 будет отобран обязательно.
+
+**Аудит без выборки:** 100%-ная проверка уместна при небольшом количестве крупных элементов; также аудитор может отобрать все элементы выше определённого порога (специфические элементы).
+
+### D5. Аналитические процедуры по существу (ISA 520)
+
+Порядок: **сформировать ожидание → определить допустимое отклонение → сравнить с фактом → расследовать существенные расхождения.**
+
+**Пример: проверка расходов на оплату труда «в целом» (proof in total).**
+Данные Ольха Co: расходы на оплату труда прошлого года — $2 400 000 при средней численности 120 человек. В текущем году средняя численность — 126 человек, с начала года зарплаты повышены на 4%. По учёту расходы — $2 750 000. Допустимое отклонение — $50 000.
+
+**Решение:**
+1. Ожидание: 2 400 000 × (126 / 120) × 1,04 = 2 400 000 × 1,05 × 1,04 = **$2 620 800**.
+2. Отклонение: 2 750 000 – 2 620 800 = **$129 200** (около 4,9%).
+3. Отклонение превышает допустимое ($50 000) → требуется расследование.
+4. Процедуры: запросить объяснения (бонусы, сверхурочные, выходные пособия) и подтвердить документами; проверить выборку сотрудников из ведомости по кадровым данным (риск «фиктивных сотрудников»); проверить, не отнесены ли к зарплате иные расходы.
+
+### D6. Автоматизированные инструменты и методы (automated tools and techniques)
+
+- **Аудиторское программное обеспечение (audit software):** выгрузка данных клиента и их анализ — пересчёт, поиск дубликатов, выборка, анализ возрастной структуры, поиск проводок в выходные дни.
+- **Тестовые данные (test data):** аудитор вводит в систему клиента правильные и ошибочные данные, чтобы убедиться, что система обрабатывает их корректно.
+- **Аналитика данных (data analytics):** анализ 100% операций.
+
+**Плюсы:** проверка всей совокупности, скорость, точность, высвобождение времени на суждения. **Минусы:** затраты на настройку, совместимость систем, риск повреждения данных клиента (тестовые данные), необходимость специальных навыков.
+
+### D7. Использование работы других лиц
+
+| Стандарт | Кто | Что оценивает аудитор |
+|---|---|---|
+| ISA 610 | Внутренний аудит | Объективность (статус, подотчётность), компетентность, систематический и дисциплинированный подход; затем оценивает и перепроверяет часть конкретной работы |
+| ISA 620 | Эксперт аудитора (оценщик, актуарий) | Компетентность, возможности, объективность; объём работы; уместность выводов |
+| ISA 402 | Обслуживающая организация (например, аутсорсинг расчёта зарплаты) | Понимание услуг; отчёты аудитора обслуживающей организации (тип 1 — описание и дизайн контролей, тип 2 — также эффективность работы контролей) |
+
+**Важно:** ответственность за аудиторское мнение **полностью лежит на внешнем аудиторе**; в заключении на работу эксперта или внутреннего аудита не ссылаются (кроме случаев, требуемых законом).
+
+### D8. Аудит конкретных статей
+
+**Запасы (inventory)** — ключевые риски: существование, оценка, отсечение.
+
+*На инвентаризации (ISA 501):*
+- оценить инструкции по инвентаризации до её начала;
+- наблюдать, соблюдаются ли инструкции (например, счётные группы по два человека, отгрузки на время пересчёта остановлены);
+- контрольные пересчёты «от учёта к полу» (существование) и «от пола к учёту» (полнота);
+- выявить повреждённые и устаревшие запасы (оценка);
+- зафиксировать номера последних накладных на отгрузку и приход (отсечение).
+
+*Оценка:* сравнить себестоимость с ценой продажи после отчётной даты — запасы оцениваются по наименьшей из себестоимости и чистой цены реализации (IAS 2); проверить калькуляцию себестоимости по счетам поставщиков.
+
+**Дебиторская задолженность (receivables):**
+- **внешнее подтверждение (ISA 505):** позитивные запросы (клиент отвечает в любом случае) — надёжнее; негативные (отвечает только при несогласии) — используются при низком риске;
+- при отсутствии ответа — **альтернативные процедуры:** проверить оплату после отчётной даты; проверить счета и отгрузочные документы;
+- оценка: анализ возрастной структуры, оплаты после отчётной даты, переписки о спорных долгах, достаточность резерва;
+- отсечение: накладные до и после отчётной даты.
+
+**Кредиторская задолженность (payables)** — главный риск: **полнота** (занижение).
+- сверка с выписками поставщиков (supplier statement reconciliation) — внешний документ;
+- **поиск неотражённых обязательств:** проверить платежи и счета, полученные после отчётной даты, — относятся ли они к отчётному году;
+- проверка начисленных обязательств (accruals) по последующим счетам.
+
+**Денежные средства (bank and cash):** запрос-подтверждение в банк (bank confirmation letter) — сальдо, кредиты, залоги, гарантии; проверка банковской выверки, пересчёт; проверка выверочных статей — непредъявленные чеки и деньги в пути — по выпискам после отчётной даты.
+
+**Основные средства (property, plant and equipment):**
+- существование — от реестра основных средств к физическому активу;
+- полнота — от физического актива к реестру;
+- права — правоустанавливающие документы, свидетельства на недвижимость, документы о регистрации транспорта;
+- оценка — пересчёт амортизации, проверка сроков использования (сравнение с прибылями/убытками от выбытия), признаки обесценения;
+- поступления — счета поставщиков, разграничение капитальных и текущих расходов.
+
+**Резервы и условные обязательства (IAS 37):** запрос к юристам клиента (с разрешения клиента), протоколы советов директоров, переписка; оценка вероятности оттока и надёжности оценки суммы; проверка раскрытий.
+
+**Займы, капитал, налог:** подтверждение у кредитора, проверка кредитного договора (ставки, ковенанты, сроки погашения → классификация на кратко- и долгосрочную часть), уставные документы и решения о выпуске акций, налоговые расчёты.
+
+### D9. Аудит некоммерческих организаций (not-for-profit organisations)
+
+Особенности: целевые средства и ограничения на их использование; важна **полнота** поступлений (наличные пожертвования); часто слабый контроль из-за волонтёров и малого штата; существенность может определяться от доходов или расходов; аудит нередко проводится в интересах доноров и регулятора благотворительности.
+
+---
+
+### Модуль D — OT-вопросы
+
+**Вопрос D.1.** Аудитор выбирает отгрузочные накладные и прослеживает их до книги продаж. Какое утверждение тестируется?
+
+1. Возникновение
+2. Полнота
+3. Права и обязанности
+4. Классификация
+
+> **Ответ: 2.** Движение от первичного документа к учёту проверяет, что ничего не пропущено.
+
+**Вопрос D.2.** Какое доказательство наиболее надёжно?
+
+1. Устное объяснение финансового директора
+2. Копия счёта поставщика из файла клиента
+3. Ответ банка на запрос, полученный аудитором напрямую
+4. Банковская выверка, подготовленная бухгалтером клиента
+
+> **Ответ: 3.** Внешний источник, получен аудитором напрямую, в документальной форме.
+
+**Вопрос D.3.** Совокупность — $3 600 000, размер выборки MUS — 90. Каков интервал выборки?
+
+1. $25 000
+2. $40 000
+3. $36 000
+4. $90 000
+
+> **Ответ: 2.** 3 600 000 / 90 = $40 000.
+
+---
+
+### Модуль D — Кейс раздела B
+
+**Сценарий.** Вы проводите финальный аудит Клён Co за год, закончившийся 31 марта 20X6. Существенность — $250 000.
+- Дебиторская задолженность — $4,8 млн. Компания отправила позитивные запросы 40 клиентам; не ответили 6, включая крупнейшего клиента Акация Co (долг $620 000, просрочка 120 дней).
+- Компания приобрела новый склад за $3,5 млн в сентябре 20X5.
+
+**Требование:**
+(a) опишите процедуры в отношении дебиторов, не ответивших на запрос (3 балла);
+(b) опишите процедуры по оценке задолженности Акация Co (3 балла);
+(c) опишите процедуры по аудиту приобретения склада (4 балла).
+
+**Образец решения:**
+
+**(a) Дебиторы без ответа:**
+- с разрешения клиента направить повторный запрос;
+- проверить поступление денег после 31 марта 20X6 по банковским выпискам с привязкой к конкретным счетам на конец года;
+- для неоплаченных счетов — проверить подтверждающие документы: заказ клиента, подписанную клиентом отгрузочную накладную, счёт, для подтверждения существования задолженности.
+
+**(b) Оценка задолженности Акация Co:**
+- обсудить с кредитным контролёром перспективы погашения и проверить переписку с Акация Co;
+- проверить оплаты после отчётной даты;
+- проверить публичную информацию о финансовом положении Акация Co (отчётность, новости, сведения о банкротстве);
+- если погашение маловероятно — сделать вывод о необходимости резерва; $620 000 превышает существенность ($250 000), поэтому при отсутствии резерва искажение существенно.
+
+**(c) Приобретение склада:**
+- сверить стоимость в реестре основных средств со счётом и договором купли-продажи (точность);
+- проверить правоустанавливающие документы, подтверждающие право собственности Клён Co (права);
+- проверить, что в стоимость включены только допустимые затраты (сборы, пошлины), а расходы на ремонт отнесены на расходы (классификация);
+- пересчитать амортизацию с сентября 20X5 по ставке, соответствующей учётной политике (оценка);
+- проверить одобрение покупки советом директоров по протоколу;
+- проверить раскрытие в примечаниях.
+
+---
+
+## 11. Модуль E. Обзор и аудиторское заключение (Review and reporting)
+
+### E1. События после отчётной даты (ISA 560, IAS 10)
+
+**По IAS 10:**
+- **корректирующие события (adjusting)** — дают дополнительную информацию об условиях, **существовавших на отчётную дату** (банкротство дебитора, продажа запасов ниже себестоимости, решение суда по иску прошлого года) → суммы в отчётности корректируются;
+- **некорректирующие события (non-adjusting)** — условия **возникли после** отчётной даты (пожар, выпуск акций, крупное приобретение) → при существенности раскрываются в примечаниях.
+
+**Обязанности аудитора по трём периодам:**
+
+| Период | Обязанность | Действия |
+|---|---|---|
+| От отчётной даты до подписания заключения | **Активная**: выполнить процедуры для выявления событий | Запросы руководству, чтение протоколов, проверка промежуточной отчётности, проверка оплат и поступлений после отчётной даты, запросы юристам |
+| От подписания заключения до выпуска отчётности | **Пассивная**: процедур не требуется, но реагировать, если стало известно | Обсудить с руководством; при изменении отчётности — расширить процедуры до новой даты и выпустить новое заключение |
+| После выпуска отчётности | Нет обязанности выполнять процедуры | Если стал известен факт, который изменил бы заключение, — обсудить с руководством; при необходимости новое заключение и меры для информирования пользователей |
+
+### E2. Непрерывность деятельности (ISA 570)
+
+**Руководство** оценивает способность компании продолжать деятельность как минимум **12 месяцев** с отчётной даты. **Аудитор** оценивает уместность допущения о непрерывности деятельности.
+
+**Признаки проблем с непрерывностью:**
+- *финансовые:* чистые обязательства, отрицательный операционный денежный поток, невозможность погасить или рефинансировать кредиты, нарушение ковенантов, просрочка платежей поставщикам;
+- *операционные:* потеря ключевого клиента, рынка или поставщика, уход ключевого персонала, нехватка сырья;
+- *прочие:* крупные судебные иски, изменения в законодательстве.
+
+**Процедуры аудитора:** проанализировать прогнозы движения денежных средств и проверить их допущения; проверить переписку с банком о продлении кредитов; проверить соблюдение ковенантов; прочитать протоколы; проверить события после отчётной даты; получить письменные заявления о планах руководства.
+
+**Влияние на заключение:**
+
+| Ситуация | Заключение |
+|---|---|
+| Допущение уместно, существенной неопределённости нет | Немодифицированное |
+| Существенная неопределённость есть и **адекватно раскрыта** | Немодифицированное + раздел «Существенная неопределённость в отношении непрерывности деятельности» (Material uncertainty related to going concern) |
+| Существенная неопределённость **не раскрыта или раскрыта неадекватно** | Модифицированное: с оговоркой или отрицательное |
+| Допущение **неуместно**, но отчётность составлена на его основе | Отрицательное (adverse) |
+
+### E3. Письменные заявления (ISA 580)
+
+**Обязательные заявления руководства:** руководство выполнило обязанность по подготовке отчётности; предоставило аудитору всю информацию и доступ; все операции отражены. Также письменные заявления используются для подтверждения других доказательств (например, намерения руководства).
+
+Письменные заявления — **дополнение**, а не замена иных доказательств. Дата — как можно ближе к дате заключения, но не позже неё. **Отказ** руководства предоставить обязательные заявления, как правило, ведёт к **отказу от выражения мнения**.
+
+### E4. Оценка выявленных искажений (ISA 450)
+
+Аудитор накапливает выявленные искажения (кроме явно незначительных), сообщает их руководству и просит исправить. Неисправленные искажения оцениваются по отдельности и в совокупности на предмет существенности — по сумме и по характеру.
+
+**Виды искажений:** фактические (factual), основанные на суждении (judgemental), прогнозные (projected — экстраполированные с выборки на совокупность).
+
+### E5. Аудиторское заключение (ISA 700, 701, 705, 706, 720)
+
+**Основные элементы немодифицированного заключения (ISA 700):** заголовок; адресат; раздел «Мнение»; раздел «Основание для мнения»; непрерывность деятельности (при необходимости); ключевые вопросы аудита (для листинговых компаний); прочая информация; ответственность руководства и TCWG; ответственность аудитора; подпись, адрес, дата.
+
+**Ключевые вопросы аудита (key audit matters, ISA 701)** — для листинговых компаний: вопросы, которые, по профессиональному суждению аудитора, были наиболее значимы для аудита (например, сложные оценочные значения). KAM не заменяют модификацию мнения.
+
+**Модифицированное мнение (ISA 705) — главная матрица:**
+
+| Причина | Существенно, но не всеобъемлюще (material, not pervasive) | Существенно и всеобъемлюще (material and pervasive) |
+|---|---|---|
+| Существенное искажение (material misstatement) | **Мнение с оговоркой** (qualified): «за исключением…» | **Отрицательное мнение** (adverse) |
+| Невозможность получить достаточные надлежащие доказательства (inability to obtain sufficient appropriate evidence) | **Мнение с оговоркой** (qualified): «за исключением возможного влияния…» | **Отказ от выражения мнения** (disclaimer of opinion) |
+
+**Всеобъемлющее (pervasive)** — затрагивает многие статьи или существенную часть отчётности, или имеет фундаментальное значение для понимания отчётности.
+
+**Дополнительные разделы (ISA 706):**
+- **«Важные обстоятельства» (Emphasis of Matter)** — привлекает внимание к вопросу, **правильно отражённому и раскрытому** в отчётности, который важен для понимания (например, последствия крупного пожара после отчётной даты). Мнение **не модифицируется**.
+- **«Прочие сведения» (Other Matter)** — вопрос, **не представленный** в отчётности, но важный для понимания аудита (например, отчётность прошлого года проверял другой аудитор).
+
+**Прочая информация (ISA 720):** аудитор читает годовой отчёт (отчёт директоров и т.п.) на предмет существенных несоответствий с отчётностью; при неисправленном несоответствии описывает его в разделе «Прочая информация».
+
+---
+
+### Модуль E — OT-вопросы
+
+**Вопрос E.1.** Через месяц после отчётной даты крупный дебитор объявлен банкротом. Задолженность существовала на отчётную дату. Как классифицируется событие?
+
+1. Некорректирующее, требует раскрытия
+2. Корректирующее, требует корректировки суммы
+3. Не влияет на отчётность
+4. Требует раздела «Прочие сведения»
+
+> **Ответ: 2.** Банкротство подтверждает, что задолженность была безнадёжной уже на отчётную дату.
+
+**Вопрос E.2.** Аудитор не смог присутствовать на инвентаризации; запасы составляют 3% итога активов и 15% прибыли; альтернативных процедур нет. Какое мнение уместно?
+
+1. Немодифицированное
+2. С оговоркой («за исключением возможного влияния»)
+3. Отрицательное
+4. Отказ от выражения мнения
+
+> **Ответ: 2.** Невозможность получить доказательства; эффект существенный (15% прибыли), но ограничен одной статьёй — не всеобъемлющий.
+
+**Вопрос E.3.** Существенная неопределённость в отношении непрерывности деятельности адекватно раскрыта. Каково заключение?
+
+1. С оговоркой
+2. Отрицательное
+3. Немодифицированное с разделом «Существенная неопределённость в отношении непрерывности деятельности»
+4. Немодифицированное с разделом «Прочие сведения»
+
+> **Ответ: 3.**
+
+---
+
+### Модуль E — Кейс раздела B
+
+**Сценарий.** Ясень Co, год закончился 31 декабря 20X5. Прибыль до налогообложения — $5 млн, итог активов — $40 млн. Заключение планируется подписать 20 марта 20X6.
+
+1. На отчётную дату Тополь Co должна Ясень Co $420 000. В феврале 20X6 Тополь Co введена процедура банкротства; кредиторы, по оценке управляющего, получат не более 5%. Руководство Ясень Co отказывается создавать резерв, так как «банкротство произошло в новом году».
+2. 15 февраля 20X6 пожар уничтожил склад, на котором находились запасы стоимостью $700 000, закупленные в январе 20X6. Страховка не покрывает ущерб. Руководство включило полное описание события в примечания.
+
+**Требование (10 баллов):** по каждой ситуации обсудите вопрос, опишите процедуры и оцените влияние на аудиторское заключение, если вопрос не будет решён.
+
+**Образец решения:**
+
+**Ситуация 1. Дебитор Тополь Co.**
+
+*Вопрос.* Банкротство после отчётной даты даёт информацию об условиях, существовавших на 31 декабря 20X5 (дебитор уже испытывал трудности), — это **корректирующее событие** (IAS 10). Задолженность нужно списать или создать резерв. Аргумент руководства некорректен.
+
+*Существенность.* $420 000 × 95% невозмещаемой суммы ≈ $399 000; это **8% прибыли** до налогообложения ($399 000 / $5 000 000) и 1% активов → **существенно**.
+
+*Процедуры:*
+- получить документы о банкротстве и уведомление управляющего с оценкой выплат кредиторам;
+- проверить, были ли поступления от Тополь Co после отчётной даты;
+- проверить возрастную структуру долга Тополь Co на отчётную дату (была ли просрочка);
+- обсудить с руководством и запросить корректировку.
+
+*Влияние на заключение.* Если руководство откажется от корректировки, это **существенное искажение**. Оно затрагивает дебиторку и прибыль, но не всеобъемлюще → **мнение с оговоркой** («за исключением»), с описанием искажения в разделе «Основание для мнения с оговоркой».
+
+**Ситуация 2. Пожар.**
+
+*Вопрос.* Пожар произошёл после отчётной даты и уничтожил запасы, купленные в 20X6 году, — это **некорректирующее событие**. Корректировки не требуется, но при существенности нужно раскрытие (характер события и оценка финансового эффекта). Убыток $700 000 = 14% прибыли → существенно. Также оценить, не создаёт ли убыток угрозу **непрерывности деятельности**.
+
+*Процедуры:*
+- получить отчёты о пожаре и документы страховщика об отказе в выплате;
+- проверить счета поставщиков на запасы, закупленные в январе 20X6, для подтверждения суммы $700 000;
+- проверить прогнозы денежных потоков на предмет влияния убытка и восстановления склада на непрерывность деятельности;
+- прочитать примечание и проверить его полноту и точность.
+
+*Влияние на заключение.* Раскрытие сделано полностью → мнение **немодифицированное**. Аудитор может добавить раздел **«Важные обстоятельства»** (Emphasis of Matter), если считает событие фундаментальным для понимания пользователями. Если бы раскрытия не было — существенное искажение (недостаточное раскрытие), не всеобъемлющее → мнение с оговоркой.
+
+**Типичные ошибки:** путать корректирующие и некорректирующие события; выбирать отрицательное мнение для искажения одной статьи; забывать рассчитать существенность и обосновать её.
+
+---
+
+## 12. Техника сдачи экзамена
+
+1. **Читайте требование до сценария.** Сначала поймите, что спрашивают (риски? процедуры? недостатки?), затем читайте кейс целенаправленно.
+2. **Глаголы требования:**
+
+| Глагол | Что делать | Баллы на пункт (ориентир) |
+|---|---|---|
+| Define / State (определите, укажите) | Короткое точное определение или перечень | 0,5–1 |
+| Describe (опишите) | Описать характеристики, процедуру | 1 |
+| Explain (объясните) | Объяснить «почему» и «как» | 1 |
+| Identify and explain (определите и объясните) | 0,5 — найти, 0,5 — объяснить | 1 |
+| Discuss (обсудите) | Рассмотреть проблему с разных сторон, сделать вывод | 1–2 |
+
+3. **Каждая мысль — новый абзац.** Экзаменатору легче поставить балл.
+4. **Используйте факты сценария.** Общая теория без привязки к кейсу почти не оценивается.
+5. **Соблюдайте время:** 1,8 минуты на балл. Не уходите в один вопрос в ущерб остальным.
+6. **Таблицы** для «риск — ответ» и «недостаток — рекомендация» экономят время и структурируют ответ.
+7. **Считайте существенность** в вопросах о событиях после отчётной даты и заключении — это часто отдельные баллы.
+8. **Раздел A:** не оставляйте вопросы без ответа; штрафа за неверный ответ нет.
+
+---
+
+## 13. План самоподготовки (10 недель)
+
+| Неделя | Тема | Результат |
+|---|---|---|
+| 1 | Модуль A: понятие аудита, регулирование, корпоративное управление | Конспект + OT A |
+| 2 | Модуль A: этика | Решён кейс по этике |
+| 3 | Модуль B: принятие клиента, планирование, существенность | Расчёты существенности |
+| 4 | Модуль B: аудиторские риски, мошенничество | 2 кейса «риск — ответ» |
+| 5 | Модуль C: системы контроля, циклы | Таблицы контролей по циклам |
+| 6 | Модуль C: недостатки и рекомендации | 2 кейса по ISA 265 |
+| 7 | Модуль D: доказательства, утверждения, выборка | Карта «утверждение — процедура» |
+| 8 | Модуль D: аудит конкретных статей | Процедуры по каждой статье баланса |
+| 9 | Модуль E: события после отчётной даты, непрерывность, заключение | Матрица ISA 705 наизусть |
+| 10 | Повторение и пробные экзамены | 2 полных пробных экзамена за 3 часа |
+
+---
+
+## 14. Глоссарий RU/EN
+
+| Русский | English |
+|---|---|
+| Аудиторский риск | Audit risk |
+| Неотъемлемый риск | Inherent risk |
+| Риск средств контроля | Control risk |
+| Риск необнаружения | Detection risk |
+| Риск существенного искажения | Risk of material misstatement |
+| Существенность | Materiality |
+| Существенность для выполнения процедур | Performance materiality |
+| Профессиональный скептицизм | Professional scepticism |
+| Лица, отвечающие за корпоративное управление | Those charged with governance (TCWG) |
+| Письмо-обязательство | Engagement letter |
+| Тест средств контроля | Test of control |
+| Процедура по существу | Substantive procedure |
+| Утверждения | Assertions |
+| Внешнее подтверждение | External confirmation |
+| Выборка в денежных единицах | Monetary unit sampling |
+| Значительный недостаток | Significant deficiency |
+| Корректирующее событие | Adjusting event |
+| Непрерывность деятельности | Going concern |
+| Письменные заявления | Written representations |
+| Ключевые вопросы аудита | Key audit matters |
+| Мнение с оговоркой | Qualified opinion |
+| Отрицательное мнение | Adverse opinion |
+| Отказ от выражения мнения | Disclaimer of opinion |
+| Важные обстоятельства | Emphasis of Matter |
+| Прочие сведения | Other Matter |
+| Всеобъемлющий | Pervasive |
+| Организация общественного значения | Public interest entity (PIE) |
+
+---
+
+## 15. Критерии приёмки (Definition of Done)
+
+- [x] Охвачены все пять разделов программы AA (A–E).
+- [x] В каждом модуле есть теория простым языком со ссылками на ISA.
+- [x] В каждом модуле есть не менее 3 OT-вопросов с ответами и пояснениями.
+- [x] В каждом модуле есть кейс раздела B с образцом решения в экзаменационном формате.
+- [x] Расчётные примеры (существенность, аналитические процедуры, выборка) содержат пошаговое решение.
+- [x] Ключевые термины продублированы на английском; есть глоссарий.
+- [x] Есть раздел по технике сдачи экзамена и план подготовки.
+- [ ] Перед использованием сверить с актуальными Syllabus and Study Guide и Examinable Documents ACCA на текущую экзаменационную сессию.
+
+---
+
+*Конец документа.*
+</script>
+<script>
+(function(){
+"use strict";
+var SRC=document.getElementById('src').textContent.replace(/\r/g,'');
+function $(s,r){return (r||document).querySelector(s);}
+function $$(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s));}
+
+/* ---------- storage ---------- */
+var LS={
+  get:function(k,d){try{var v=localStorage.getItem('acca-aa:'+k);return v?JSON.parse(v):d;}catch(e){return d;}},
+  set:function(k,v){try{localStorage.setItem('acca-aa:'+k,JSON.stringify(v));}catch(e){}}
+};
+var state={read:LS.get('read',{}),quiz:LS.get('quiz',{}),plan:LS.get('plan',{}),known:LS.get('known',{})};
+function save(k){LS.set(k,state[k]);}
+
+/* ---------- markdown ---------- */
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function inline(s){
+  s=esc(s);
+  s=s.replace(/`([^`]+)`/g,'<code>$1</code>');
+  s=s.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');
+  s=s.replace(/(^|[^*\w])\*(?!\s)([^*]+?)\*(?!\w)/g,'$1<em>$2</em>');
+  s=s.replace(/^\[( |x)\] /,function(m,c){return '<span class="cb'+(c==='x'?' on':'')+'">'+(c==='x'?'✓':'')+'</span> ';});
+  return s;
+}
+function plain(s){return String(s).replace(/\*\*|\*|`/g,'');}
+var BLOCK=/^(#{1,6}\s|---+\s*$|\||>|\s*[-*] |\d+\. )/;
+function parseBlocks(lines){
+  var out=[],i=0,m;
+  while(i<lines.length){
+    var l=lines[i];
+    if(!l.trim()){i++;continue;}
+    if((m=l.match(/^(#{1,6})\s+(.*)$/))){out.push({t:'h',level:m[1].length,text:m[2].trim()});i++;continue;}
+    if(/^---+\s*$/.test(l)){out.push({t:'hr'});i++;continue;}
+    if(l.charAt(0)==='|'){var rows=[];while(i<lines.length&&lines[i].charAt(0)==='|'){rows.push(lines[i]);i++;}out.push(parseTable(rows));continue;}
+    if(l.charAt(0)==='>'){var q=[];while(i<lines.length&&lines[i].charAt(0)==='>'){q.push(lines[i].replace(/^>\s?/,''));i++;}out.push({t:'quote',children:parseBlocks(q)});continue;}
+    if(/^\s*[-*] /.test(l)){var it=[];while(i<lines.length&&/^\s*[-*] /.test(lines[i])){it.push(lines[i].replace(/^\s*[-*] /,''));i++;}out.push({t:'ul',items:it});continue;}
+    if((m=l.match(/^(\d+)\. /))){var start=+m[1],oi=[];while(i<lines.length&&/^\d+\. /.test(lines[i])){oi.push(lines[i].replace(/^\d+\. /,''));i++;}out.push({t:'ol',start:start,items:oi});continue;}
+    var p=[l];i++;
+    while(i<lines.length&&lines[i].trim()&&!BLOCK.test(lines[i])){p.push(lines[i]);i++;}
+    out.push({t:'p',text:p.join('\n')});
+  }
+  return out;
+}
+function parseTable(rows){
+  function split(r){return r.trim().replace(/^\|/,'').replace(/\|$/,'').split('|').map(function(c){return c.trim();});}
+  return {t:'table',head:split(rows[0]),body:rows.slice(2).map(split)};
+}
+
+var quizzes=[],quizById={};
+var QRE=/^\*\*Вопрос\s+([A-E]\.\d+)\.\*\*\s*/;
+function enhance(tokens,sec){
+  var out=[];
+  for(var i=0;i<tokens.length;i++){
+    var tk=tokens[i];
+    if(tk.t==='p'&&QRE.test(tk.text)&&tokens[i+1]&&tokens[i+1].t==='ol'&&tokens[i+2]&&tokens[i+2].t==='quote'){
+      var id=tk.text.match(QRE)[1];
+      var ansText=(tokens[i+2].children[0]&&tokens[i+2].children[0].text)||'';
+      var am=ansText.match(/^\*\*Ответ:\s*(\d+)\.\*\*\s*([\s\S]*)$/);
+      var quiz={t:'quiz',id:id,q:tk.text.replace(QRE,''),options:tokens[i+1].items,answer:am?+am[1]:0,expl:am?am[2]:ansText,mod:sec.mod,sec:sec};
+      sec.quizzes.push(quiz);quizzes.push(quiz);quizById[id]=quiz;
+      out.push(quiz);i+=2;continue;
+    }
+    if(tk.t==='p'&&/^\*\*Образец решения:?\*\*$/.test(tk.text.trim())){
+      var inner=[],j=i+1;
+      while(j<tokens.length&&!(tokens[j].t==='hr'||tokens[j].t==='h'||(tokens[j].t==='p'&&/^\*\*Типичные ошибки/.test(tokens[j].text)))){inner.push(tokens[j]);j++;}
+      out.push({t:'solution',children:inner});i=j-1;continue;
+    }
+    out.push(tk);
+  }
+  return out;
+}
+
+function render(tokens){
+  var h='';
+  tokens.forEach(function(t){
+    switch(t.t){
+      case 'h':
+        if(t.level<=2){h+='<h2>'+inline(t.text)+'</h2>';break;}
+        var lvl=t.level===3?2:3,cls='';
+        if(/OT-вопросы/.test(t.text))cls='h-ot';else if(/Кейс раздела B/.test(t.text))cls='h-case';
+        h+='<h'+lvl+(t.id?' id="'+t.id+'"':'')+(cls?' class="'+cls+'"':'')+'>'+inline(t.text)+'</h'+lvl+'>';break;
+      case 'hr':h+='<hr>';break;
+      case 'p':h+='<p>'+t.text.split('\n').map(inline).join('<br>')+'</p>';break;
+      case 'ul':
+        var cl=t.items.every(function(x){return /^\[( |x)\]/.test(x);});
+        h+='<ul'+(cl?' class="checklist"':'')+'>'+t.items.map(function(x){return '<li>'+inline(x)+'</li>';}).join('')+'</ul>';break;
+      case 'ol':h+='<ol'+(t.start!==1?' start="'+t.start+'"':'')+'>'+t.items.map(function(x){return '<li>'+inline(x)+'</li>';}).join('')+'</ol>';break;
+      case 'table':
+        h+='<div class="tbl"><table><thead><tr>'+t.head.map(function(c){return '<th>'+inline(c)+'</th>';}).join('')+'</tr></thead><tbody>'+
+          t.body.map(function(r){return '<tr>'+r.map(function(c){return '<td>'+inline(c)+'</td>';}).join('')+'</tr>';}).join('')+'</tbody></table></div>';break;
+      case 'quote':h+='<blockquote>'+render(t.children)+'</blockquote>';break;
+      case 'quiz':h+=quizHTML(t,false);break;
+      case 'solution':h+='<details class="solution"><summary>Показать образец решения</summary><div class="sol-body">'+render(t.children)+'</div></details>';break;
+    }
+  });
+  return h;
+}
+function quizHTML(q,showSrc){
+  return '<div class="quiz" data-q="'+q.id+'"><div class="quiz-top"><span class="tag'+(showSrc?' m m'+q.mod:'')+'">OT · '+q.id+'</span>'+
+    (showSrc?'<a class="qsrc" href="#/s/'+q.sec.num+'">Модуль '+q.mod+' · '+esc(q.sec.short)+' →</a>':'<span class="pts">2 балла</span>')+'</div>'+
+    '<p class="quiz-q">'+inline(q.q)+'</p><div class="opts">'+
+    q.options.map(function(o,k){return '<button class="opt" data-k="'+(k+1)+'"><span class="n">'+(k+1)+'</span><span>'+inline(o)+'</span></button>';}).join('')+
+    '</div><div class="expl" hidden><div class="verdict"></div><div>Правильный ответ: <strong>'+q.answer+'</strong>. '+inline(q.expl||'')+'</div><button class="link" data-retry>Ответить заново</button></div></div>';
+}
+
+/* ---------- build sections ---------- */
+var raw=[],cur={title:null,lines:[]};
+SRC.split('\n').forEach(function(l){if(/^## /.test(l)){raw.push(cur);cur={title:l.slice(3).trim(),lines:[]};}else cur.lines.push(l);});
+raw.push(cur);
+var intro=raw.shift();
+var introTokens=parseBlocks(intro.lines);
+var meta={};
+introTokens.forEach(function(t){if(t.t==='table')t.body.forEach(function(r){meta[plain(r[0])]=plain(r[1]);});});
+var docTitle=((introTokens.filter(function(t){return t.t==='h';})[0]||{}).text||'').replace(/^PRD:\s*/,'');
+var introNote=introTokens.filter(function(t){return t.t==='quote';})[0];
+
+var sections=[];
+raw.forEach(function(r){
+  if(/^Содержание/.test(r.title))return;
+  var m=r.title.match(/^(\d+)\.\s*(.*)$/);
+  var num=m?m[1]:String(sections.length+1),title=m?m[2]:r.title,en='';
+  var em=title.match(/^(.*?)\s*\(([A-Za-z][^)]*)\)\s*$/);
+  if(em){title=em[1];en=em[2];}
+  var mm=title.match(/^Модуль ([A-E])\.\s*/);
+  var sec={id:'s'+num,num:num,title:title,short:mm?title.replace(mm[0],''):title,en:en,mod:mm?mm[1]:null,quizzes:[],toc:[]};
+  var tokens=parseBlocks(r.lines);
+  while(tokens.length&&tokens[tokens.length-1].t==='hr')tokens.pop();
+  tokens=enhance(tokens,sec);
+  var k=0;
+  tokens.forEach(function(t){if(t.t==='h'&&t.level===3){t.id=sec.id+'-'+(++k);sec.toc.push({id:t.id,text:t.text});}});
+  sec.tokens=tokens;
+  sections.push(sec);
+});
+function secByNum(n){for(var i=0;i<sections.length;i++)if(sections[i].num===String(n))return sections[i];return null;}
+function firstTable(n){var s=secByNum(n);if(!s)return null;for(var i=0;i<s.tokens.length;i++)if(s.tokens[i].t==='table')return s.tokens[i];return null;}
+/* понятия терминов: en → [определение, номер раздела] */
+var DEFS={
+  "Audit risk":["Риск того, что аудитор выразит неуместное мнение, когда финансовая отчётность существенно искажена. Аудиторский риск = неотъемлемый риск × риск средств контроля × риск необнаружения.",8],
+  "Inherent risk":["Подверженность статьи или утверждения существенному искажению до учёта средств контроля. Факторы по ISA 315: сложность, субъективность, изменения, неопределённость, подверженность предвзятости руководства или мошенничеству. Аудитор на него не влияет.",8],
+  "Control risk":["Риск того, что система внутреннего контроля клиента не предотвратит либо своевременно не обнаружит и не исправит существенное искажение.",8],
+  "Detection risk":["Риск того, что процедуры аудитора не выявят существующее существенное искажение. Единственный компонент аудиторского риска, которым управляет аудитор — через характер, сроки и объём процедур.",8],
+  "Risk of material misstatement":["Риск того, что отчётность была существенно искажена ещё до аудита; складывается из неотъемлемого риска и риска средств контроля (RoMM). Чем он выше, тем ниже должен быть риск необнаружения и тем больше нужно доказательств.",8],
+  "Materiality":["Величина пропуска или искажения, которая может повлиять на экономические решения пользователей отчётности (ISA 320). Оценивается по сумме (например, 5–10% прибыли до налогообложения) и по характеру — операции со связанными сторонами существенны независимо от суммы.",8],
+  "Performance materiality":["Сумма ниже общей существенности (обычно 50–75% от неё), используемая при планировании процедур, чтобы снизить риск того, что несущественные по отдельности искажения в совокупности превысят общую существенность.",8],
+  "Professional scepticism":["Критическое, вопрошающее отношение аудитора к доказательствам: внимание к противоречиям и признакам мошенничества, готовность ставить под сомнение надёжность документов и ответов руководства (ISA 200).",7],
+  "Those charged with governance (TCWG)":["Лица или орган (совет директоров, аудиторский комитет), отвечающие за надзор за стратегическим направлением компании и подготовкой её отчётности. Им аудитор сообщает о значительных недостатках контроля, этических угрозах и ключевых вопросах аудита.",7],
+  "Engagement letter":["Письменное соглашение об условиях аудита (ISA 210): цель и объём аудита, ответственность аудитора и руководства, применимая концепция отчётности, ожидаемая форма заключения, порядок расчёта гонорара.",8],
+  "Test of control":["Процедура, подтверждающая, что средство контроля работало эффективно в течение всего периода. Отвечает на вопрос «контроль выполнялся?». Если контроли эффективны, объём процедур по существу можно сократить.",9],
+  "Substantive procedure":["Процедура для выявления существенных искажений на уровне утверждений: детальные тесты операций и сальдо, а также аналитические процедуры по существу. Отвечает на вопрос «сумма правильная?». По существенным статьям выполняется всегда.",9],
+  "Assertions":["Утверждения руководства, явно или неявно содержащиеся в отчётности: возникновение и существование, полнота, точность и оценка, отсечение, классификация, права и обязанности, представление. Аудитор подбирает процедуры под каждое утверждение.",10],
+  "External confirmation":["Доказательство, полученное аудитором напрямую от третьей стороны в письменной форме (ISA 505): запросы в банк, письма дебиторам и кредиторам. Позитивный запрос требует ответа в любом случае, негативный — только при несогласии.",10],
+  "Monetary unit sampling":["Статистический метод выборки, при котором единицей совокупности считается каждый доллар (MUS). Интервал = совокупность / размер выборки; крупные суммы попадают в выборку с большей вероятностью, а суммы больше интервала — обязательно.",10],
+  "Significant deficiency":["Недостаток или сочетание недостатков внутреннего контроля, которые, по суждению аудитора, достаточно важны, чтобы их рассмотрели лица, отвечающие за корпоративное управление. Сообщается письменно (ISA 265).",9],
+  "Adjusting event":["Событие после отчётной даты, которое даёт дополнительную информацию об условиях, существовавших на отчётную дату (банкротство дебитора, продажа запасов ниже себестоимости, решение суда по прошлогоднему иску). Суммы в отчётности корректируются (IAS 10).",11],
+  "Going concern":["Допущение, что компания продолжит деятельность в обозримом будущем (как минимум 12 месяцев с отчётной даты) и не намерена и не вынуждена ликвидироваться или существенно сокращать деятельность. Аудитор оценивает уместность этого допущения (ISA 570).",11],
+  "Written representations":["Письменные заявления руководства аудитору (ISA 580) о выполнении своих обязанностей и по отдельным вопросам. Дополняют, но не заменяют другие доказательства; отказ дать обязательные заявления обычно ведёт к отказу от выражения мнения.",11],
+  "Key audit matters":["Вопросы, которые, по профессиональному суждению аудитора, были наиболее значимыми при аудите отчётности текущего периода (ISA 701), например сложные оценочные значения. Обязательны в заключении листинговых компаний и не заменяют модификацию мнения.",11],
+  "Qualified opinion":["Модифицированное мнение «за исключением…»: выражается, когда искажение или невозможность получить доказательства существенны, но не всеобъемлющи (ISA 705).",11],
+  "Adverse opinion":["Мнение о том, что отчётность не отражает достоверно положение дел. Выражается, когда искажения одновременно существенны и всеобъемлющи (ISA 705).",11],
+  "Disclaimer of opinion":["Аудитор не выражает мнения, потому что не смог получить достаточные надлежащие доказательства, а возможное влияние существенно и всеобъемлюще (ISA 705).",11],
+  "Emphasis of Matter":["Раздел заключения «Важные обстоятельства», который привлекает внимание к вопросу, правильно отражённому и раскрытому в отчётности и важному для её понимания (ISA 706). Мнение при этом не модифицируется.",11],
+  "Other Matter":["Раздел заключения «Прочие сведения» — о вопросе, который не представлен в отчётности, но важен для понимания аудита, обязанностей аудитора или заключения (например, прошлый год проверял другой аудитор).",11],
+  "Pervasive":["Характер влияния, при котором затронуты многие статьи или существенная часть отчётности либо вопрос фундаментален для её понимания. Определяет выбор между мнением с оговоркой и отрицательным мнением или отказом от мнения.",11],
+  "Public interest entity (PIE)":["Организация общественного значения, прежде всего листинговая компания. К её аудиту применяются более строгие правила независимости: ротация ключевого партнёра не позже чем через 7 лет, контроль доли гонораров свыше 15%, запрет многих неаудиторских услуг.",7]
+};
+var EXTRA=[
+  ["Задание, обеспечивающее уверенность","Assurance engagement","Работа, в ходе которой специалист собирает доказательства и выражает вывод, повышающий доверие пользователей к информации. Пять элементов: трёхсторонние отношения, предмет, подходящие критерии, достаточные надлежащие доказательства, письменный отчёт.",7],
+  ["Разумная уверенность","Reasonable assurance","Высокий, но не абсолютный уровень уверенности, который даёт аудит. Вывод выражается в позитивной форме: «отчётность отражает достоверно во всех существенных аспектах…».",7],
+  ["Ограниченная уверенность","Limited assurance","Уровень уверенности при обзорной проверке (review): процедуры в основном сводятся к запросам и аналитике, вывод выражается в негативной форме: «ничто не привлекло нашего внимания…».",7],
+  ["Достоверная картина","True and fair view","Состояние отчётности, при котором она не содержит существенных искажений и честно отражает положение и результаты компании в соответствии с применимой концепцией. О нём аудитор выражает мнение.",7],
+  ["Профессиональное суждение","Professional judgement","Применение знаний, опыта и стандартов для принятия обоснованных решений в ходе аудита: выбор существенности, оценка рисков, достаточности доказательств и вида мнения (ISA 200).",7],
+  ["Корпоративное управление","Corporate governance","Система, посредством которой компании направляются и контролируются: разделение ролей председателя и генерального директора, независимые неисполнительные директора, прозрачное вознаграждение, ответственность совета за риски и контроль.",7],
+  ["Аудиторский комитет","Audit committee","Комитет совета директоров из независимых неисполнительных директоров (хотя бы один с актуальным финансовым опытом). Контролирует отчётность, внутренний контроль, внутренний аудит, назначение и независимость внешнего аудитора.",7],
+  ["Угрозы независимости","Threats to independence","Обстоятельства, способные нарушить объективность аудитора: личная заинтересованность, самопроверка, защита интересов, близкое знакомство, запугивание.",7],
+  ["Меры защиты","Safeguards","Действия, которые устраняют угрозу этическим принципам или снижают её до приемлемого уровня: замена члена команды, независимая проверка работы, разделение команд, отказ от услуги или от клиента.",7],
+  ["Условный гонорар","Contingent fee","Вознаграждение, размер которого зависит от результата работы (например, от вывода аудитора). За аудит запрещено.",7],
+  ["Профессиональное согласование","Professional clearance","Обращение к предыдущему аудитору (с разрешения клиента) перед принятием задания, чтобы узнать, нет ли профессиональных причин отказаться от него.",8],
+  ["Значительный риск","Significant risk","Выявленный риск существенного искажения, находящийся у верхней границы спектра неотъемлемого риска (ISA 315). Требует особого внимания и специальных процедур.",8],
+  ["Мошенничество","Fraud","Умышленное действие с использованием обмана для получения незаконной выгоды. Два вида: фальсификация отчётности и незаконное присвоение активов. Основная ответственность за предотвращение — у руководства и TCWG (ISA 240).",8],
+  ["Обход контролей руководством","Management override of controls","Возможность руководства манипулировать учётом и отчётностью в обход действующих контролей. По ISA 240 — презюмируемый риск мошенничества, который нельзя опровергнуть.",8],
+  ["Контрольная среда","Control environment","«Тон сверху»: отношение руководства к контролю, честность и этические ценности, организационная структура. Первый из пяти компонентов системы внутреннего контроля.",9],
+  ["Разделение обязанностей","Segregation of duties","Распределение несовместимых функций (авторизация, учёт, хранение активов, сверка) между разными людьми, чтобы один сотрудник не мог совершить и скрыть ошибку или хищение.",9],
+  ["Сквозная проверка","Walkthrough test","Прослеживание одной операции через всю систему от начала до конца, чтобы убедиться, что документирование системы соответствует действительности.",9],
+  ["Достаточные надлежащие доказательства","Sufficient appropriate audit evidence","Основа аудиторского мнения (ISA 500). Достаточность — количество доказательств, надлежащий характер — их качество: уместность и надёжность.",10],
+  ["Отсечение","Cut-off","Утверждение о том, что операции и события отражены в правильном отчётном периоде. Проверяется по документам до и после отчётной даты.",10],
+  ["Аналитические процедуры","Analytical procedures","Оценка финансовой информации через анализ взаимосвязей между финансовыми и нефинансовыми данными (ISA 520): ожидание → допустимое отклонение → сравнение с фактом → расследование расхождений.",10],
+  ["Риск выборки","Sampling risk","Риск того, что вывод по выборке будет отличаться от вывода, который был бы сделан при проверке всей совокупности (ISA 530).",10],
+  ["Эксперт аудитора","Auditor's expert","Специалист в области, отличной от бухучёта и аудита (оценщик, актуарий), чью работу использует аудитор (ISA 620). Аудитор оценивает его компетентность, возможности и объективность; ответственность за мнение остаётся на аудиторе.",10],
+  ["Некорректирующее событие","Non-adjusting event","Событие после отчётной даты, отражающее условия, возникшие после неё (пожар, выпуск акций, крупное приобретение). Суммы не корректируются; при существенности событие раскрывается в примечаниях (IAS 10).",11],
+  ["Существенная неопределённость","Material uncertainty","Неопределённость в отношении событий или условий, которая может вызвать значительные сомнения в способности компании продолжать деятельность. При адекватном раскрытии мнение не модифицируется, но добавляется отдельный раздел (ISA 570).",11],
+  ["Немодифицированное мнение","Unmodified opinion","«Чистое» мнение: отчётность отражает достоверно во всех существенных аспектах в соответствии с применимой концепцией (ISA 700).",11],
+  ["Письмо руководству","Report to management","Письмо аудитора по итогам аудита с описанием недостатков контроля по схеме «недостаток → последствие → рекомендация» (management letter).",9],
+  ["Аудиторская документация","Audit documentation","Рабочие документы, позволяющие опытному аудитору, не участвовавшему в задании, понять процедуры, их результаты и выводы (ISA 230). Архив формируется, как правило, в течение 60 дней после даты заключения.",8]
+];
+var glossary=(firstTable(14)||{body:[]}).body.map(function(r){var en=plain(r[1]),d=DEFS[en]||['',null];return {ru:plain(r[0]),en:en,def:d[0],sec:d[1]};})
+  .concat(EXTRA.map(function(x){return {ru:x[0],en:x[1],def:x[2],sec:x[3]};}))
+  .sort(function(a,b){return a.ru.localeCompare(b.ru,'ru');});
+(function(){var t=firstTable(14);if(!t)return;t.head=['Русский','English','Понятие'];t.body=glossary.map(function(g){return [g.ru,g.en,g.def];});})();
+var planRows=(firstTable(13)||{body:[]}).body;
+var modules=sections.filter(function(s){return s.mod;});
+
+/* ---------- search index ---------- */
+function tokText(t){
+  switch(t.t){
+    case 'h':case 'p':return t.text;
+    case 'ul':case 'ol':return t.items.join(' ');
+    case 'table':return t.head.join(' ')+' '+t.body.map(function(r){return r.join(' ');}).join(' ');
+    case 'quote':case 'solution':return t.children.map(tokText).join(' ');
+    case 'quiz':return t.q+' '+t.options.join(' ')+' '+t.expl;
+  }
+  return '';
+}
+var index=[];
+sections.forEach(function(s){
+  var chunk={sec:s,id:null,head:s.title,text:''};
+  s.tokens.forEach(function(t){
+    if(t.t==='h'&&t.level===3){if(chunk.text.trim())index.push(chunk);chunk={sec:s,id:t.id,head:t.text,text:''};return;}
+    chunk.text+=' '+tokText(t);
+  });
+  if(chunk.text.trim())index.push(chunk);
+});
+index.forEach(function(c){c.text=plain(c.text).replace(/\s+/g,' ').trim();c.lower=(plain(c.head)+' '+c.text).toLowerCase();});
+function reEsc(s){return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');}
+function hl(text,words){
+  var h=esc(text);
+  if(!words.length)return h;
+  return h.replace(new RegExp('('+words.map(function(w){return reEsc(esc(w));}).join('|')+')','gi'),'<mark>$1</mark>');
+}
+
+/* ---------- icons ---------- */
+var IC={
+  home:'<path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/>',
+  quiz:'<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .8-1 1.5v.7"/><path d="M12 17h.01"/>',
+  cards:'<rect x="3" y="6" width="14" height="14" rx="2"/><path d="M7 3h12a2 2 0 0 1 2 2v12"/>',
+  calc:'<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h.01M12 11h.01M16 11h.01M8 15h.01M12 15h.01M16 15h.01M8 18h8"/>',
+  plan:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>'
+};
+function icon(n){return '<svg class="i" viewBox="0 0 24 24">'+IC[n]+'</svg>';}
+
+/* ---------- nav ---------- */
+function quizStats(list){
+  var a=0,c=0;(list||quizzes).forEach(function(q){var v=state.quiz[q.id];if(v!=null){a++;if(v===q.answer)c++;}});
+  return {answered:a,correct:c,total:(list||quizzes).length};
+}
+function renderNav(active){
+  function item(href,key,inner,extra){return '<a href="'+href+'" class="'+(active===key?'active ':'')+(extra||'')+'">'+inner+'</a>';}
+  function secItem(s){
+    var done=state.read[s.id];
+    var badge=s.mod?'<span class="num m m'+s.mod+'" style="background:var(--mc)">'+s.mod+'</span>':'<span class="num">'+s.num+'</span>';
+    return item('#/s/'+s.num,'s/'+s.num,badge+'<span>'+esc(s.short)+'</span>'+(done?'<span class="chk">✓</span>':''),done?'done':'');
+  }
+  var qs=quizStats();
+  var planDone=planRows.filter(function(r){return state.plan[r[0]];}).length;
+  var h='<div class="nav-label">Обучение</div>'+
+    item('#/','home',icon('home')+'<span>Главная</span>')+
+    item('#/quiz','quiz',icon('quiz')+'<span>OT-тренажёр</span><span class="count">'+qs.answered+'/'+qs.total+'</span>')+
+    item('#/cards','cards',icon('cards')+'<span>Термины и понятия</span>')+
+    item('#/tools','tools',icon('calc')+'<span>Калькуляторы</span>')+
+    item('#/plan','plan',icon('plan')+'<span>План подготовки</span><span class="count">'+planDone+'/'+planRows.length+'</span>')+
+    '<div class="nav-label">Модули программы</div>'+modules.map(secItem).join('')+
+    '<div class="nav-label">О пособии</div>'+sections.filter(function(s){return !s.mod&&+s.num<=6;}).map(secItem).join('')+
+    '<div class="nav-label">Экзамен и справочник</div>'+sections.filter(function(s){return !s.mod&&+s.num>6;}).map(secItem).join('');
+  $('#nav').innerHTML=h;
+}
+
+/* ---------- views ---------- */
+function homeView(){
+  var readN=sections.filter(function(s){return state.read[s.id];}).length;
+  var qs=quizStats();
+  var planDone=planRows.filter(function(r){return state.plan[r[0]];}).length;
+  var pct=function(a,b){return b?Math.round(a/b*100):0;};
+  var mods=modules.map(function(s){
+    var st=quizStats(s.quizzes);
+    return '<a class="mod m'+s.mod+'" href="#/s/'+s.num+'"><div class="top"><span class="letter">'+s.mod+'</span><div><h3>'+esc(s.short)+'</h3><div class="en">'+esc(s.en)+'</div></div></div>'+
+      '<div class="bar"><i style="width:'+(state.read[s.id]?100:pct(st.answered,st.total)*.6)+'%"></i></div>'+
+      '<div class="meta"><span>'+s.toc.length+' тем · OT '+st.correct+'/'+st.total+'</span><span>'+(state.read[s.id]?'✓ изучено':'не изучено')+'</span></div></a>';
+  }).join('');
+  var others=sections.filter(function(s){return !s.mod;}).map(function(s){return '<a href="#/s/'+s.num+'"><span class="num">'+s.num+'</span>'+esc(s.title)+'</a>';}).join('');
+  return '<section class="hero"><div class="deco"></div><div class="kicker">Учебное пособие для самоподготовки</div>'+
+    '<h1>ACCA AA (F8) — Audit and Assurance</h1><p>Аудит и сопутствующие услуги: теория простым языком, примеры, экзаменационные вопросы и разобранные решения по всей программе A–E.</p>'+
+    '<div class="chips">'+['Язык','Охват','Версия','Дата'].filter(function(k){return meta[k];}).map(function(k){return '<span class="chip">'+k+': <b>'+esc(meta[k].replace(/;.*/,''))+'</b></span>';}).join('')+'</div>'+
+    '<div class="cta"><a class="btn primary" href="#/s/'+(modules[0]?modules[0].num:1)+'">Начать с модуля A</a><a class="btn" href="#/quiz">Пройти OT-тест</a><a class="btn" href="#/plan">План на 10 недель</a></div></section>'+
+    '<div class="grid g3" style="margin-bottom:20px">'+
+      '<div class="card stat" style="margin:0"><span class="l">Изучено разделов</span><span class="v">'+readN+' / '+sections.length+'</span><div class="bar"><i style="width:'+pct(readN,sections.length)+'%"></i></div></div>'+
+      '<div class="card stat" style="margin:0"><span class="l">OT-вопросы: верно / отвечено</span><span class="v">'+qs.correct+' / '+qs.answered+'</span><div class="bar"><i style="width:'+pct(qs.correct,qs.total)+'%;background:var(--ok)"></i></div></div>'+
+      '<div class="card stat" style="margin:0"><span class="l">План подготовки</span><span class="v">'+planDone+' / '+planRows.length+' нед.</span><div class="bar"><i style="width:'+pct(planDone,planRows.length)+'%;background:var(--accent)"></i></div></div>'+
+    '</div>'+
+    '<h2 class="block-title">Модули программы</h2><div class="mods" style="margin-bottom:24px">'+mods+'</div>'+
+    '<section class="card"><h2>Формат экзамена</h2>'+
+      '<div class="exam-stats"><div><b>3 часа</b><span>продолжительность</span></div><div><b>50 / 100</b><span>проходной балл</span></div><div><b>CBE</b><span>компьютерный экзамен</span></div><div><b>1,8 мин</b><span>на один балл</span></div></div>'+
+      '<div class="split"><div class="sa" style="flex:30">A · 30</div><div class="sb" style="flex:70">Раздел B · 70 баллов</div></div>'+
+      '<div class="split-legend"><div><b>Раздел A</b> — 3 OT-кейса по 10 баллов (5 вопросов по 2 балла)</div><div><b>Раздел B</b> — 1 вопрос на 30 баллов и 2 вопроса по 20 баллов; кейсы по любым темам A–E</div></div>'+
+    '</section>'+
+    '<section class="card"><h2>Как устроена каждая тема</h2><div class="flow"><span>Теория</span><em>→</em><span>Пример</span><em>→</em><span>Экзаменационный вопрос</span><em>→</em><span>Разобранное решение</span><em>→</em><span>Типичные ошибки</span></div></section>'+
+    '<h2 class="block-title">Все разделы</h2><div class="links" style="margin-bottom:20px">'+others+'</div>'+
+    (introNote?'<blockquote>'+render(introNote.children)+'</blockquote>':'')+
+    '<footer class="foot">'+esc(docTitle)+(meta['Статус']?' · '+esc(meta['Статус']):'')+'. Прогресс сохраняется в этом браузере.</footer>';
+}
+
+function sectionView(sec){
+  var i=sections.indexOf(sec),prev=sections[i-1],next=sections[i+1],done=!!state.read[sec.id];
+  return '<nav class="crumbs"><a href="#/">Главная</a><span>/</span><span>'+(sec.mod?'Модули программы':'Раздел '+sec.num)+'</span></nav>'+
+    '<header class="sec-head'+(sec.mod?' m'+sec.mod:'')+'"><div class="sec-num">'+(sec.mod||sec.num)+'</div><div>'+
+      '<div class="kicker">'+(sec.mod?'Модуль '+sec.mod:'Раздел '+sec.num)+(sec.quizzes.length?' · OT-вопросов: '+sec.quizzes.length:'')+'</div>'+
+      '<h1>'+inline(sec.short)+'</h1>'+(sec.en?'<div class="en">'+esc(sec.en)+'</div>':'')+'</div></header>'+
+    (sec.toc.length>1?'<div class="toc">'+sec.toc.map(function(t){return '<a href="#/s/'+sec.num+'/'+t.id+'">'+inline(t.text)+'</a>';}).join('')+'</div>':'')+
+    '<article class="doc">'+render(sec.tokens)+'</article>'+
+    '<div class="sec-foot"><button class="btn '+(done?'btn-ok':'primary')+'" data-read="'+sec.id+'">'+(done?'✓ Раздел изучен':'Отметить раздел как изученный')+'</button></div>'+
+    '<div class="pager">'+(prev?'<a class="pg" href="#/s/'+prev.num+'"><small>← Назад</small><span>'+esc(prev.short)+'</span></a>':'<span></span>')+
+      (next?'<a class="pg next" href="#/s/'+next.num+'"><small>Далее →</small><span>'+esc(next.short)+'</span></a>':'<span></span>')+'</div>';
+}
+
+function quizView(f){
+  var list=quizzes.filter(function(q){return f==='all'||q.mod===f;});
+  return '<header class="page-head"><div class="kicker">Раздел A экзамена</div><h1>OT-тренажёр</h1><p class="lead">Все объективные вопросы пособия с мгновенной проверкой и пояснениями. Штрафа за неверный ответ на экзамене нет — отвечайте на всё.</p></header>'+
+    '<div class="card score" id="quizScore"></div>'+
+    '<div class="quiz-bar"><div class="seg">'+[['all','Все']].concat(modules.map(function(s){return [s.mod,'Модуль '+s.mod];})).map(function(o){return '<a href="#/quiz'+(o[0]==='all'?'':'/'+o[0])+'" class="'+(f===o[0]?'on':'')+'">'+o[1]+'</a>';}).join('')+'</div>'+
+    '<button class="btn sm" data-reset-quiz="'+f+'">Сбросить ответы</button></div>'+
+    list.map(function(q){return '<div class="m'+q.mod+'">'+quizHTML(q,true)+'</div>';}).join('');
+}
+function updateScore(){
+  var el=$('#quizScore');if(!el)return;
+  var f=currentQuizFilter,list=quizzes.filter(function(q){return f==='all'||q.mod===f;}),s=quizStats(list);
+  var pct=s.answered?Math.round(s.correct/s.answered*100):0;
+  el.innerHTML='<div class="stat"><span class="l">Отвечено</span><span class="v">'+s.answered+' / '+s.total+'</span></div>'+
+    '<div class="stat"><span class="l">Верно</span><span class="v" style="color:var(--ok)">'+s.correct+'</span></div>'+
+    '<div class="stat"><span class="l">Точность</span><span class="v">'+pct+'%</span></div>'+
+    '<div class="stat" style="flex:1;min-width:180px"><span class="l">'+(s.answered===s.total&&s.total?(pct>=70?'Цель ≥ 70% достигнута':'Цель — 70% и выше. Повторите теорию'):'Цель пособия — не менее 70% верных')+'</span><div class="bar"><i style="width:'+(s.total?s.correct/s.total*100:0)+'%;background:var(--ok)"></i></div></div>';
+}
+
+var cards={order:null,i:0,flip:false,dir:'def'};
+function cardsView(){
+  if(!cards.order)cards.order=glossary.map(function(_,i){return i;});
+  var groups={},letters=[];
+  glossary.forEach(function(g){var L=g.ru.charAt(0).toUpperCase();if(!groups[L]){groups[L]=[];letters.push(L);}groups[L].push(g);});
+  return '<header class="page-head"><div class="kicker">Словарь · '+glossary.length+' терминов</div><h1>Термины и понятия</h1><p class="lead">Ключевые термины курса ACCA AA с объяснением на русском языке. Английский эквивалент указан под каждым термином — так он звучит на экзамене.</p></header>'+
+    '<div class="dict-tools"><input class="filter" id="gFilter" placeholder="Найти термин или слово в понятии…"><div class="abc">'+
+      letters.map(function(L){return '<button data-letter="'+L+'">'+L+'</button>';}).join('')+'</div></div>'+
+    '<div id="gBody">'+letters.map(function(L){
+      return '<section class="tgroup" id="tg-'+L+'"><div class="tletter">'+L+'</div><div class="terms">'+groups[L].map(function(g){var s=g.sec&&secByNum(g.sec);
+        return '<div class="term"><div class="term-name"><b>'+esc(g.ru)+'</b><span class="term-en">'+esc(g.en)+'</span>'+
+          (s?'<a class="term-src" href="#/s/'+s.num+'">'+(s.mod?'Модуль '+s.mod:'Раздел '+s.num)+' →</a>':'')+'</div><p class="term-def">'+esc(g.def)+'</p></div>';}).join('')+'</div></section>';
+    }).join('')+'</div>'+
+    '<div class="empty" id="gEmpty" hidden>Ничего не найдено.</div>'+
+    '<h2 class="block-title" style="margin-top:36px">Тренажёр: проверьте себя</h2>'+
+    '<div class="fc-wrap"><div class="fc-bar"><div class="seg"><button data-dir="ru" class="'+(cards.dir==='ru'?'on':'')+'">RU → EN</button><button data-dir="en" class="'+(cards.dir==='en'?'on':'')+'">EN → RU</button><button data-dir="def" class="'+(cards.dir==='def'?'on':'')+'">Понятие → термин</button></div><span class="fc-count" id="fcCount"></span></div>'+
+    '<button class="flashcard" id="fc" aria-label="Перевернуть карточку"><div class="fc-inner"><div class="fc-face front"></div><div class="fc-face back"></div></div></button>'+
+    '<div class="fc-ctrl"><button class="btn" data-fc="prev">← Назад</button><button class="btn" data-fc="shuffle">Перемешать</button><button class="btn" data-fc="known" id="fcKnown">Знаю</button><button class="btn primary" data-fc="next">Далее →</button></div>'+
+    '<p class="hint">Клик или пробел — перевернуть, стрелки ← → — листать.</p></div>';
+}
+function drawCard(){
+  var fc=$('#fc');if(!fc||!glossary.length)return;
+  var g=glossary[cards.order[cards.i]],known=!!state.known[g.en],front,back;
+  var def='<p class="fc-def">'+esc(g.def)+'</p>';
+  if(cards.dir==='def'){
+    front='<small>Понятие</small>'+def;
+    back='<small>Термин</small><b>'+esc(g.ru)+'</b><span class="fc-sub">'+esc(g.en)+'</span>';
+  }else{
+    var a=cards.dir==='ru'?g.ru:g.en,b=cards.dir==='ru'?g.en:g.ru;
+    front='<small>'+(cards.dir==='ru'?'Русский':'English')+'</small><b>'+esc(a)+'</b>';
+    back='<small>'+(cards.dir==='ru'?'English':'Русский')+'</small><b>'+esc(b)+'</b>'+def;
+  }
+  $('.front',fc).innerHTML=front+(known?'<span class="known">✓ знаю</span>':'');
+  $('.back',fc).innerHTML=back;
+  fc.classList.toggle('flipped',cards.flip);
+  var kn=glossary.filter(function(x){return state.known[x.en];}).length;
+  $('#fcCount').textContent='Карточка '+(cards.i+1)+' из '+glossary.length+' · знаю: '+kn;
+  var kb=$('#fcKnown');kb.textContent=known?'✓ Знаю':'Знаю';kb.classList.toggle('btn-ok',known);
+}
+function fcMove(d){cards.i=(cards.i+d+glossary.length)%glossary.length;cards.flip=false;drawCard();}
+
+function field(id,label,val,step){return '<label class="f"><span>'+label+'</span><input type="number" id="'+id+'" value="'+val+'"'+(step?' step="'+step+'"':'')+' inputmode="decimal"></label>';}
+function toolsView(){
+  return '<header class="page-head"><div class="kicker">Практикум</div><h1>Калькуляторы и тренажёры</h1><p class="lead">Интерактивные версии расчётов из пособия. Значения по умолчанию взяты из примеров — меняйте их и смотрите, как меняется вывод.</p></header>'+
+  '<div class="tools">'+
+  '<section class="tool wide"><h2>Существенность (ISA 320)</h2><p class="sub">Пример Береза Co. Экзаменатор оценивает обоснование выбора базы и процента, а не «правильное» число.</p>'+
+    '<div class="fields">'+field('m-rev','Выручка, $',48000000)+field('m-pbt','Прибыль до налогообложения, $',3200000)+field('m-ast','Итог активов, $',26000000)+'</div>'+
+    '<div class="tbl" id="m-out"></div>'+
+    '<div class="fields" style="margin-top:12px">'+field('m-sel','Выбранная существенность, $',200000)+'<label class="f"><span>Существенность для процедур: <b id="m-pct-v">75%</b> от общей</span><input type="range" id="m-pct" min="50" max="75" step="5" value="75"></label></div>'+
+    '<div id="m-pm"></div></section>'+
+  '<section class="tool"><h2>Аналитическая проверка зарплаты</h2><p class="sub">Proof in total, ISA 520 — пример Ольха Co.</p>'+
+    '<div class="fields">'+field('p-prior','Расходы прошлого года, $',2400000)+field('p-ph','Численность прошлого года',120)+field('p-ch','Численность текущего года',126)+field('p-raise','Повышение зарплат, %',4,'0.1')+field('p-rec','По учёту, $',2750000)+field('p-tol','Допустимое отклонение, $',50000)+'</div>'+
+    '<div id="p-out"></div></section>'+
+  '<section class="tool"><h2>Оборачиваемость дебиторской задолженности</h2><p class="sub">Дни = Дебиторская задолженность / Выручка × 365.</p>'+
+    '<div class="fields">'+field('r-rec1','Дебиторка, прошлый год, $',4000000)+field('r-rev1','Выручка, прошлый год, $',40000000)+field('r-rec2','Дебиторка, текущий год, $',6000000)+field('r-rev2','Выручка, текущий год, $',42000000)+'</div>'+
+    '<div id="r-out"></div></section>'+
+  '<section class="tool"><h2>Выборка в денежных единицах (MUS)</h2><p class="sub">Интервал = совокупность / размер выборки (ISA 530).</p>'+
+    '<div class="fields">'+field('s-pop','Совокупность, $',2400000)+field('s-n','Размер выборки',60)+field('s-start','Случайный старт, $',15000)+'</div>'+
+    '<div id="s-out"></div></section>'+
+  '<section class="tool"><h2>Время на вопрос</h2><p class="sub">Около 1,8 минуты на балл.</p>'+
+    '<div class="fields">'+field('t-marks','Баллы за вопрос',20)+'</div><div id="t-out"></div>'+
+    '<ul class="mini"><li>Раздел A: 3 кейса × 10 баллов — по 18 мин (54 мин)</li><li>Раздел B: вопрос на 30 баллов — 54 мин</li><li>Раздел B: 2 вопроса по 20 баллов — по 36 мин (72 мин)</li></ul></section>'+
+  '<section class="tool wide"><h2>Какое мнение выразить? (ISA 705)</h2><p class="sub">Главная матрица модифицированного мнения.</p>'+
+    '<div class="q-label">Что выявлено?</div><div class="seg" data-group="cause"><button data-v="mis" class="on">Существенное искажение</button><button data-v="lim">Невозможность получить достаточные надлежащие доказательства</button></div>'+
+    '<div class="q-label">Насколько значимо влияние?</div><div class="seg" data-group="scale"><button data-v="nm">Несущественно</button><button data-v="m" class="on">Существенно, но не всеобъемлюще</button><button data-v="mp">Существенно и всеобъемлюще</button></div>'+
+    '<div class="opinion" id="op-out"></div></section>'+
+  '<section class="tool wide"><h2>Таймер экзамена</h2><p class="sub">3 часа с подсказкой, на какой части экзамена вы должны быть сейчас.</p>'+
+    '<div class="timer" id="tm"></div><div class="row"><button class="btn primary" data-timer="start" id="tmStart">Старт</button><button class="btn" data-timer="reset">Сброс</button></div><div class="phase" id="tmPhase"></div></section>'+
+  '</div>';
+}
+function n(id){var e=document.getElementById(id);return e?(parseFloat(e.value)||0):0;}
+function usd(x){return (x<0?'−':'')+'$'+Math.round(Math.abs(x)).toLocaleString('ru-RU');}
+function fmt(x,d){return x.toLocaleString('ru-RU',{minimumFractionDigits:d||0,maximumFractionDigits:d||0});}
+function res(label,val,cls){return '<div class="res'+(cls?' '+cls:'')+'"><span>'+label+'</span><b>'+val+'</b></div>';}
+function calcTools(){
+  if(!$('#m-out'))return;
+  var r=n('m-rev'),p=n('m-pbt'),a=n('m-ast');
+  $('#m-out').innerHTML='<table><thead><tr><th>База</th><th>Диапазон</th><th>Расчёт</th></tr></thead><tbody>'+
+    [['Выручка','0,5–1%',r*.005,r*.01],['Прибыль до налогообложения','5–10%',p*.05,p*.1],['Итог активов','1–2%',a*.01,a*.02]].map(function(x){return '<tr><td>'+x[0]+'</td><td>'+x[1]+'</td><td>'+usd(x[2])+' – '+usd(x[3])+'</td></tr>';}).join('')+'</tbody></table>';
+  var pct=+$('#m-pct').value;$('#m-pct-v').textContent=pct+'%';
+  $('#m-pm').innerHTML=res('Существенность для выполнения процедур',usd(n('m-sel')*pct/100))+'<p class="mini" style="padding:0">Чем выше риск (новый кредит с ковенантом, слабые контроли, ошибки прошлых лет), тем ниже выбирайте и процент, и итоговую величину.</p>';
+
+  var exp=n('p-prior')*(n('p-ph')?n('p-ch')/n('p-ph'):0)*(1+n('p-raise')/100),diff=n('p-rec')-exp,tol=n('p-tol');
+  var over=Math.abs(diff)>tol;
+  $('#p-out').innerHTML=res('Ожидание',usd(exp))+res('Отклонение',usd(diff)+(exp?' ('+fmt(diff/exp*100,1)+'%)':''))+
+    res(over?'Превышает допустимое — расследовать':'В пределах допустимого',over?'Расследовать':'OK',over?'bad':'ok');
+
+  var d1=n('r-rev1')?n('r-rec1')/n('r-rev1')*365:0,d2=n('r-rev2')?n('r-rec2')/n('r-rev2')*365:0;
+  $('#r-out').innerHTML=res('Прошлый год',fmt(d1,1)+' дн.')+res('Текущий год',fmt(d2,1)+' дн.')+
+    (d2>d1?res('Клиенты платят медленнее: риск завышения оценки дебиторки','+'+fmt(d2-d1,1)+' дн.','bad'):res('Оборачиваемость не ухудшилась',fmt(d2-d1,1)+' дн.','ok'));
+
+  var pop=n('s-pop'),sn=n('s-n'),st=n('s-start'),iv=sn?pop/sn:0,pts=[];
+  for(var k=0;k<5&&iv>0;k++){var v=st+iv*k;if(v>pop)break;pts.push(usd(v));}
+  $('#s-out').innerHTML=res('Интервал выборки',usd(iv))+'<p class="mini" style="padding:0">Отбираются элементы, содержащие '+(pts.length?pts.join(', ')+'… доллар':'—')+'. Любой остаток больше '+usd(iv)+' будет отобран обязательно.</p>';
+
+  var mk=n('t-marks');$('#t-out').innerHTML=res('Время на вопрос',fmt(mk*1.8,1)+' мин');
+  calc705();
+}
+var OP={
+  none:{t:'Немодифицированное мнение',w:'«Отчётность отражает достоверно во всех существенных аспектах…»',e:'Несущественные вопросы не требуют модификации мнения. Неисправленные искажения всё равно оцениваются в совокупности (ISA 450).'},
+  mis_m:{t:'Мнение с оговоркой (qualified)',w:'«…за исключением влияния вопроса, описанного в разделе „Основание для мнения с оговоркой“…»',e:'Искажение существенно, но ограничено отдельными статьями и не меняет картину отчётности в целом.'},
+  mis_mp:{t:'Отрицательное мнение (adverse)',w:'«…финансовая отчётность не отражает достоверно…»',e:'Искажение затрагивает многие статьи, существенную часть отчётности или фундаментально для её понимания.'},
+  lim_m:{t:'Мнение с оговоркой (qualified)',w:'«…за исключением возможного влияния вопроса, описанного в разделе „Основание для мнения с оговоркой“…»',e:'Доказательств недостаточно по ограниченной области (например, одна статья), возможное влияние существенно, но не всеобъемлюще.'},
+  lim_mp:{t:'Отказ от выражения мнения (disclaimer)',w:'«Мы не выражаем мнения о прилагаемой финансовой отчётности…»',e:'Невозможность получить доказательства затрагивает отчётность настолько широко, что аудитор не может сформировать мнение. Так же обычно бывает при отказе руководства дать письменные заявления (ISA 580).'}
+};
+function calc705(){
+  var out=$('#op-out');if(!out)return;
+  var c=$('[data-group="cause"] .on').dataset.v,s=$('[data-group="scale"] .on').dataset.v;
+  var o=s==='nm'?OP.none:OP[c+'_'+s];
+  out.innerHTML='<b>'+o.t+'</b><i>'+o.w+'</i><div>'+o.e+'</div>';
+}
+var timer={left:3*3600,run:false,h:null};
+var PHASES=[[54,'Раздел A — три OT-кейса по 10 баллов'],[108,'Раздел B — вопрос на 30 баллов'],[144,'Раздел B — первый вопрос на 20 баллов'],[180,'Раздел B — второй вопрос на 20 баллов']];
+function drawTimer(){
+  var el=$('#tm');if(!el)return;
+  var s=timer.left,h=Math.floor(s/3600),m=Math.floor(s%3600/60),x=s%60;
+  el.textContent=[h,m,x].map(function(v){return (v<10?'0':'')+v;}).join(':');
+  $('#tmStart').textContent=timer.run?'Пауза':(timer.left<3*3600&&timer.left>0?'Продолжить':'Старт');
+  var used=(3*3600-s)/60,ph=PHASES.filter(function(p){return used<p[0];})[0];
+  $('#tmPhase').innerHTML=s<=0?'<b>Время вышло.</b>':'Сейчас по плану: <b>'+(ph?ph[1]:'—')+'</b>'+(ph?' · до перехода к следующей части: '+Math.ceil(ph[0]-used)+' мин':'');
+}
+
+function planView(){
+  var done=planRows.filter(function(r){return state.plan[r[0]];}).length;
+  return '<header class="page-head"><div class="kicker">10 недель</div><h1>План самоподготовки</h1><p class="lead">Отмечайте выполненные недели — прогресс сохраняется в браузере. Финальная цель: два полных пробных экзамена за 3 часа с результатом не ниже 60 баллов.</p></header>'+
+    '<div class="card stat"><span class="l">Выполнено недель</span><span class="v">'+done+' / '+planRows.length+'</span><div class="bar"><i style="width:'+(planRows.length?done/planRows.length*100:0)+'%;background:var(--ok)"></i></div></div>'+
+    '<div class="weeks">'+planRows.map(function(r){
+      var w=plain(r[0]),on=!!state.plan[r[0]],m=r[1].match(/Модуль ([A-E])/),s=null;
+      if(m)modules.forEach(function(x){if(x.mod===m[1])s=x;});
+      return '<div class="week'+(on?' on':'')+'"><input type="checkbox" data-week="'+esc(r[0])+'"'+(on?' checked':'')+' aria-label="Неделя '+esc(w)+'"><div class="wk">Неделя '+esc(w)+'</div>'+
+        '<div class="wt"><b>'+inline(r[1])+'</b><span>Результат: '+inline(r[2])+'</span></div>'+
+        (s?'<a class="btn sm" href="#/s/'+s.num+'">Открыть</a>':'<a class="btn sm" href="#/quiz">Тренажёр</a>')+'</div>';
+    }).join('')+'</div>';
+}
+
+function searchView(q){
+  var words=q.toLowerCase().split(/\s+/).filter(Boolean);
+  var hits=words.length?index.filter(function(c){return words.every(function(w){return c.lower.indexOf(w)>=0;});}):[];
+  var html=hits.slice(0,60).map(function(c){
+    var lo=c.text.toLowerCase(),pos=-1;
+    words.forEach(function(w){var p=lo.indexOf(w);if(p>=0&&(pos<0||p<pos))pos=p;});
+    var a=Math.max(0,pos-80),snip=(a>0?'…':'')+c.text.slice(a,a+230)+(a+230<c.text.length?'…':'');
+    return '<a class="result" href="#/s/'+c.sec.num+(c.id?'/'+c.id:'')+'"><div class="where">'+(c.sec.mod?'Модуль '+c.sec.mod+' · ':'Раздел '+c.sec.num+' · ')+esc(c.sec.short)+'</div>'+
+      '<div class="t">'+hl(plain(c.head),words)+'</div><div class="s">'+hl(snip,words)+'</div></a>';
+  }).join('');
+  return '<header class="page-head"><div class="kicker">Поиск</div><h1>«'+esc(q)+'»</h1><p class="lead">Найдено фрагментов: '+hits.length+'</p></header>'+
+    (html||'<div class="empty">Ничего не найдено. Попробуйте другой термин, например «ISA 570» или «скептицизм».</div>');
+}
+
+/* ---------- quiz state ---------- */
+function markQuiz(el,k){
+  var q=quizById[el.dataset.q],ok=k===q.answer;
+  el.classList.add('answered');
+  $$('.opt',el).forEach(function(b){var v=+b.dataset.k;b.disabled=true;b.classList.toggle('correct',v===q.answer);b.classList.toggle('wrong',v===k&&!ok);});
+  var ex=$('.expl',el);ex.hidden=false;ex.className='expl '+(ok?'ok':'no');$('.verdict',ex).textContent=ok?'Верно':'Неверно';
+}
+function resetQuiz(el){
+  el.classList.remove('answered');
+  $$('.opt',el).forEach(function(b){b.disabled=false;b.classList.remove('correct','wrong');});
+  $('.expl',el).hidden=true;
+}
+function restoreQuizzes(root){$$('.quiz',root).forEach(function(el){var v=state.quiz[el.dataset.q];if(v!=null)markQuiz(el,v);});}
+
+/* ---------- router ---------- */
+var currentQuizFilter='all',currentRoute='';
+function route(){
+  var parts=location.hash.replace(/^#\/?/,'').split('/'),p0=parts[0]||'',html,key=p0||'home',anchor=null;
+  if(p0==='s'){
+    var sec=secByNum(parts[1]);
+    if(!sec){location.hash='#/';return;}
+    html=sectionView(sec);key='s/'+sec.num;anchor=parts[2]||null;
+  }else if(p0==='quiz'){currentQuizFilter=parts[1]||'all';html=quizView(currentQuizFilter);}
+  else if(p0==='cards')html=cardsView();
+  else if(p0==='tools')html=toolsView();
+  else if(p0==='plan')html=planView();
+  else if(p0==='search'){var q=decodeURIComponent(parts.slice(1).join('/'));html=searchView(q);if($('#q').value!==q&&document.activeElement!==$('#q'))$('#q').value=q;}
+  else {html=homeView();key='home';}
+  var main=$('#main'),samePage=(key===currentRoute&&p0==='s');
+  if(!samePage){main.innerHTML='<div class="wrap">'+html+'</div>';restoreQuizzes(main);}
+  currentRoute=key;
+  renderNav(key);
+  document.body.classList.remove('nav-open');
+  updateScore();drawCard();calcTools();drawTimer();
+  var tSec=p0==='s'?secByNum(parts[1]):null;
+  document.title=(tSec?tSec.title+' — ':'')+'ACCA AA (F8)';
+  if(anchor){
+    var t=document.getElementById(anchor);
+    if(t){setTimeout(function(){t.scrollIntoView({behavior:samePage?'smooth':'auto',block:'start'});t.classList.remove('flash');void t.offsetWidth;t.classList.add('flash');},samePage?0:30);}
+  }else if(!samePage){window.scrollTo(0,0);}
+}
+window.addEventListener('hashchange',route);
+
+/* ---------- events ---------- */
+document.addEventListener('click',function(e){
+  var t=e.target;
+  var opt=t.closest('.opt');
+  if(opt&&!opt.disabled){var el=opt.closest('.quiz'),k=+opt.dataset.k;state.quiz[el.dataset.q]=k;save('quiz');markQuiz(el,k);updateScore();renderNav(currentRoute);return;}
+  if(t.closest('[data-retry]')){var qe=t.closest('.quiz');delete state.quiz[qe.dataset.q];save('quiz');resetQuiz(qe);updateScore();renderNav(currentRoute);return;}
+  var rq=t.closest('[data-reset-quiz]');
+  if(rq){var f=rq.dataset.resetQuiz;quizzes.forEach(function(q){if(f==='all'||q.mod===f)delete state.quiz[q.id];});save('quiz');$$('.quiz').forEach(resetQuiz);updateScore();renderNav(currentRoute);return;}
+  var rd=t.closest('[data-read]');
+  if(rd){var id=rd.dataset.read;if(state.read[id])delete state.read[id];else state.read[id]=true;save('read');
+    var on=!!state.read[id];rd.className='btn '+(on?'btn-ok':'primary');rd.textContent=on?'✓ Раздел изучен':'Отметить раздел как изученный';renderNav(currentRoute);return;}
+  var lb=t.closest('[data-letter]');
+  if(lb){var tg=document.getElementById('tg-'+lb.dataset.letter);if(tg)tg.scrollIntoView({behavior:'smooth',block:'start'});return;}
+  if(t.closest('#fc')){cards.flip=!cards.flip;drawCard();return;}
+  var fb=t.closest('[data-fc]');
+  if(fb){var a=fb.dataset.fc;
+    if(a==='next')fcMove(1);else if(a==='prev')fcMove(-1);
+    else if(a==='shuffle'){for(var i=cards.order.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),tmp=cards.order[i];cards.order[i]=cards.order[j];cards.order[j]=tmp;}cards.i=0;cards.flip=false;drawCard();}
+    else if(a==='known'){var g=glossary[cards.order[cards.i]];if(state.known[g.en])delete state.known[g.en];else state.known[g.en]=true;save('known');drawCard();}
+    return;}
+  var dd=t.closest('[data-dir]');
+  if(dd){cards.dir=dd.dataset.dir;cards.flip=false;$$('[data-dir]').forEach(function(b){b.classList.toggle('on',b===dd);});drawCard();return;}
+  var gb=t.closest('[data-group] button');
+  if(gb){$$('button',gb.parentNode).forEach(function(b){b.classList.toggle('on',b===gb);});calc705();return;}
+  var tb=t.closest('[data-timer]');
+  if(tb){
+    if(tb.dataset.timer==='reset'){clearInterval(timer.h);timer.run=false;timer.left=3*3600;}
+    else if(timer.run){clearInterval(timer.h);timer.run=false;}
+    else if(timer.left>0){timer.run=true;timer.h=setInterval(function(){timer.left=Math.max(0,timer.left-1);if(!timer.left){clearInterval(timer.h);timer.run=false;}drawTimer();},1000);}
+    drawTimer();return;}
+});
+document.addEventListener('change',function(e){
+  var w=e.target.closest('[data-week]');
+  if(w){var k=w.dataset.week;if(w.checked)state.plan[k]=true;else delete state.plan[k];save('plan');
+    var html=planView(),m=$('#main');var y=window.scrollY;m.innerHTML='<div class="wrap">'+html+'</div>';window.scrollTo(0,y);renderNav(currentRoute);}
+});
+document.addEventListener('input',function(e){
+  if(e.target.closest('.tool'))calcTools();
+  if(e.target.id==='gFilter'){var v=e.target.value.toLowerCase();$$('#gBody .term').forEach(function(r){r.hidden=v&&r.textContent.toLowerCase().indexOf(v)<0;});
+    var any=false;$$('#gBody .tgroup').forEach(function(g){var vis=$$('.term',g).some(function(t){return !t.hidden;});g.hidden=!vis;any=any||vis;});
+    $('#gEmpty').hidden=any;}
+});
+document.addEventListener('keydown',function(e){
+  if(!$('#fc')||/INPUT|TEXTAREA/.test(document.activeElement.tagName))return;
+  if(e.key==='ArrowRight'){fcMove(1);e.preventDefault();}
+  else if(e.key==='ArrowLeft'){fcMove(-1);e.preventDefault();}
+  else if(e.key===' '&&document.activeElement.id!=='fc'){cards.flip=!cards.flip;drawCard();e.preventDefault();}
+});
+
+var qTimer;
+$('#q').addEventListener('input',function(){
+  var v=this.value.trim();clearTimeout(qTimer);
+  qTimer=setTimeout(function(){
+    if(v.length>=2){var h='#/search/'+encodeURIComponent(v);if(/^#\/search\//.test(location.hash))history.replaceState(null,'',h),route();else location.hash=h;}
+    else if(!v&&/^#\/search\//.test(location.hash))location.hash='#/';
+  },220);
+});
+$('#q').addEventListener('keydown',function(e){if(e.key==='Escape'){this.value='';this.blur();}});
+$('#menuBtn').addEventListener('click',function(){document.body.classList.toggle('nav-open');});
+$('#scrim').addEventListener('click',function(){document.body.classList.remove('nav-open');});
+
+var theme=LS.get('theme',null);
+if(theme)document.documentElement.dataset.theme=theme;
+$('#themeBtn').addEventListener('click',function(){
+  var curT=document.documentElement.dataset.theme||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+  var nx=curT==='dark'?'light':'dark';document.documentElement.dataset.theme=nx;LS.set('theme',nx);
+});
+
+route();
+})();
+</script>
+</body>
+</html>
